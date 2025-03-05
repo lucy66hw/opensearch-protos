@@ -1,8 +1,11 @@
 name: Proto Convert
 
 on:
-  repository_dispatch:
-    types: [trigger]
+  workflow_dispatch:
+    inputs:
+      input_param:
+        description: 'Description of the input parameter'
+        required: false
 
 jobs:
   build:
