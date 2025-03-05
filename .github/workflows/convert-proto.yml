@@ -1,0 +1,57 @@
+name: Proto Convert
+
+on:
+  repository_dispatch:
+    types: [trigger]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Download Release Assets
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: 'lucy66hw/opensearch-protos'
+          latest: true
+          fileName: 'build/*'
+          token: ${{ secrets.OAS_PAT }}
+
+      - name: List Downloaded Files
+        run: ls -R $GITHUB_WORKSPACE
+      - name: Run Proto Conversion
+        run: npm run convert-proto
+
+      - name: Clone Protobuf Generator Repository
+        run: git clone --branch aggregate_protos https://github.com/lucy66hw/openapi-generator.git cloned-repo
+
+      - name: Build Protobuf Generator Tool
+        run: |
+          cd cloned-repo
+          ./mvnw clean package install -DskipTests
+
+      - name: Convert protobuf
+        run: |
+          java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/src/proto/protobuf-generator-config.yaml
+
+      - name: Upload Protobuf Output
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-proto
+          path: proto
