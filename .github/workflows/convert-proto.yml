@@ -1,0 +1,69 @@
+name: Proto Convert
+
+on:
+  workflow_dispatch:
+    inputs:
+      input_param:
+        description: 'Description of the input parameter'
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Download Release Assets
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: 'lucy66hw/opensearch-api-specification'
+          latest: true
+          fileName: 'opensearch-openapi.yaml'
+          tag: 'main-latest'
+          token: ${{ secrets.OAS_PAT }}
+          preRelease: true
+
+      - name: List Downloaded Files
+        run: ls -R $GITHUB_WORKSPACE
+      - name: Run Proto Conversion
+        run: npm ci && npm run convert-proto -- --input $GITHUB_WORKSPACE/opensearch-openapi.yaml
+
+      - name: Clone Protobuf Generator Repository
+        run: git clone --branch aggregate_protos https://github.com/lucy66hw/openapi-generator.git cloned-repo
+
+      - name: Build Protobuf Generator Tool
+        run: |
+          cd cloned-repo
+          ./mvnw clean package install -DskipTests
+
+      - name: Convert protobuf
+        run: |
+          java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/proto/src/protobuf-generator-config.yaml
+
+      - name: Configure Git User
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit Changes
+        run: |
+          git add .
+          git commit -m "Add generated protos" || echo "No changes to commit"
+
+      - name: Push Changes
+        run: git push origin HEAD:${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
