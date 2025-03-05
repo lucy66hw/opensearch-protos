@@ -36,7 +36,7 @@ jobs:
       - name: List Downloaded Files
         run: ls -R $GITHUB_WORKSPACE
       - name: Run Proto Conversion
-        run: npm ci && npm run convert-proto -- --input $GITHUB_WORKSPACE/opensearch-openapi.yaml
+        run: npm ci && npm run convert-proto
 
       - name: Clone Protobuf Generator Repository
         run: git clone --branch aggregate_protos https://github.com/lucy66hw/openapi-generator.git cloned-repo

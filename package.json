@@ -5,7 +5,7 @@
   "author": "opensearch-project",
   "license": "Apache-2.0",
   "scripts": {
-    "convert-proto": "ts-node tools/proto/src/ProtoPreprocessing.ts"
+    "convert-proto": "ts-node tools/proto-convert/src/ProtoPreprocessing.ts"
   },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
