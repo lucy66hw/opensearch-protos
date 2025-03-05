@@ -55,8 +55,17 @@ jobs:
         run: |
           java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/proto/src/protobuf-generator-config.yaml
 
-      - name: Upload Protobuf Output
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-proto
-          path: proto
+      - name: Configure Git User
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit Changes
+        run: |
+          git add .
+          git commit -m "Add generated protos" || echo "No changes to commit"
+
+      - name: Push Changes
+        run: git push origin HEAD:${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

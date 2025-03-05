@@ -1,5 +1,5 @@
 generatorName: protobuf-schema
-outputDir: proto
+outputDir: spec/proto
 inputSpec: build/processed-opensearch-openapi.yaml
 additionalProperties:
   addJsonNameAnnotation: true
