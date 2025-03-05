@@ -48,7 +48,7 @@ jobs:
 
       - name: Convert protobuf
         run: |
-          java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/proto/src/protobuf-generator-config.yaml
+          java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/proto-convert/src/protobuf-generator-config.yaml
 
       - name: Configure Git User
         run: |

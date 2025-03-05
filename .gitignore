@@ -44,3 +44,7 @@ node_modules
 
 # build output
 build/
+
+#tooling
+cloned-repo/
+spec/protos/.openapi-generator-ignore
