@@ -672,14 +672,16 @@ message BoolQuery {
 
   MinimumShouldMatch minimum_should_match = 4;
 
-  BoolQueryAllOfMust must = 5;
+  string test = 5;
 
-  BoolQueryAllOfMustNot must_not = 6;
+  BoolQueryAllOfMust must = 6;
 
-  BoolQueryAllOfShould should = 7;
+  BoolQueryAllOfMustNot must_not = 7;
+
+  BoolQueryAllOfShould should = 8;
 
   // Ensures correct behavior when a query contains only `must_not` clauses. By default set to true, OpenSearch adds a match-all clause to ensure results are returned from Lucene, with the `must_not` conditions applied as filters. If set to false, the query may return no results, as Lucene typically requires at least one positive condition.
-  bool adjust_pure_negative = 8;
+  bool adjust_pure_negative = 9;
 
 }
 message BoolQueryAllOfFilter {
