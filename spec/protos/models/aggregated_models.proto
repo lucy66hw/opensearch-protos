@@ -562,7 +562,7 @@ message ArrayPercentilesItem {
 
   string key = 1;
 
-  TTestAggregateAllOfValue value = 2;
+  ArrayPercentilesItemValue value = 2;
 
   string value_as_string = 3;
 
@@ -571,6 +571,14 @@ message ArrayPercentilesItemArray {
 
 
   repeated ArrayPercentilesItem array_percentiles_item_array = 1;
+
+}
+message ArrayPercentilesItemValue {
+
+
+  float float = 1;
+
+  string string = 2;
 
 }
 message AutoDateHistogramAggregate {
@@ -3903,7 +3911,7 @@ message Hit {
 
   string id = 3 [json_name="_id"];
 
-  HitsMetadataMaxScore score = 4 [json_name="_score"];
+  HitScore score = 4 [json_name="_score"];
 
   Explanation explanation = 5 [json_name="_explanation"];
 
@@ -3936,6 +3944,14 @@ message Hit {
   int64 version = 19 [json_name="_version"];
 
   repeated FieldValue sort = 20;
+
+}
+message HitScore {
+
+
+  float float = 1;
+
+  string string = 2;
 
 }
 message HitsMetadata {
@@ -4561,6 +4577,20 @@ message IpRangeBucketMap {
 
 
   map<string, IpRangeBucket> ip_range_bucket_map = 1;
+
+}
+message KeyedPercentilesValue {
+
+
+  float float = 1;
+
+  string string = 2;
+
+}
+message KeyedPercentilesValueMap {
+
+
+  map<string, KeyedPercentilesValue> keyed_percentiles_value_map = 1;
 
 }
 message KeywordAnalyzer {
@@ -6090,7 +6120,7 @@ message PercentileRanksAggregation {
 message Percentiles {
 
     oneof percentiles {
-        TTestAggregateAllOfValueMap t_test_aggregate_all_of_value_map = 1;
+        KeyedPercentilesValueMap keyed_percentiles_value_map = 1;
 
         ArrayPercentilesItemArray array_percentiles_item_array = 2;
 
@@ -7700,10 +7730,14 @@ message SignificantTextAggregation {
 message SimpleAnalyzer {
 
 
-  SimpleMovingAverageAggregationAllOfModel type = 1;
+  SimpleAnalyzerType type = 1;
 
   string version = 2;
 
+}
+enum SimpleAnalyzerType {
+  SIMPLE_ANALYZER_TYPE_UNSPECIFIED = 0;
+  SIMPLE_ANALYZER_TYPE_SIMPLE = 1;
 }
 message SimpleMovingAverageAggregation {
 
@@ -8204,17 +8238,17 @@ enum StandardAnalyzerType {
 message StandardDeviationBounds {
 
 
-  TTestAggregateAllOfValue upper = 1;
+  StandardDeviationBoundsUpper upper = 1;
 
-  TTestAggregateAllOfValue lower = 2;
+  StandardDeviationBoundsLower lower = 2;
 
-  TTestAggregateAllOfValue upper_population = 3;
+  StandardDeviationBoundsUpperPopulation upper_population = 3;
 
-  TTestAggregateAllOfValue lower_population = 4;
+  StandardDeviationBoundsLowerPopulation lower_population = 4;
 
-  TTestAggregateAllOfValue upper_sampling = 5;
+  StandardDeviationBoundsUpperSampling upper_sampling = 5;
 
-  TTestAggregateAllOfValue lower_sampling = 6;
+  StandardDeviationBoundsLowerSampling lower_sampling = 6;
 
 }
 message StandardDeviationBoundsAsString {
@@ -8231,6 +8265,54 @@ message StandardDeviationBoundsAsString {
   string upper_sampling = 5;
 
   string lower_sampling = 6;
+
+}
+message StandardDeviationBoundsLower {
+
+
+  float float = 1;
+
+  string string = 2;
+
+}
+message StandardDeviationBoundsLowerPopulation {
+
+
+  float float = 1;
+
+  string string = 2;
+
+}
+message StandardDeviationBoundsLowerSampling {
+
+
+  float float = 1;
+
+  string string = 2;
+
+}
+message StandardDeviationBoundsUpper {
+
+
+  float float = 1;
+
+  string string = 2;
+
+}
+message StandardDeviationBoundsUpperPopulation {
+
+
+  float float = 1;
+
+  string string = 2;
+
+}
+message StandardDeviationBoundsUpperSampling {
+
+
+  float float = 1;
+
+  string string = 2;
 
 }
 message StatsAggregate {
@@ -8694,12 +8776,6 @@ message TTestAggregateAllOfValue {
   float float = 1;
 
   string string = 2;
-
-}
-message TTestAggregateAllOfValueMap {
-
-
-  map<string, TTestAggregateAllOfValue> t_test_aggregate_all_of_value_map = 1;
 
 }
 message TTestAggregation {
