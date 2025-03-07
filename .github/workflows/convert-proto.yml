@@ -2,7 +2,7 @@ name: Proto Convert
 
 on:
   repository_dispatch:
-    types: [trigger]
+    types: [Proto-Convert]
 
 jobs:
   build:
