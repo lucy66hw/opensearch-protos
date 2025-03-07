@@ -562,7 +562,7 @@ message ArrayPercentilesItem {
 
   string key = 1;
 
-  ArrayPercentilesItemValue value = 2;
+  TTestAggregateAllOfValue value = 2;
 
   string value_as_string = 3;
 
@@ -571,14 +571,6 @@ message ArrayPercentilesItemArray {
 
 
   repeated ArrayPercentilesItem array_percentiles_item_array = 1;
-
-}
-message ArrayPercentilesItemValue {
-
-
-  float float = 1;
-
-  string string = 2;
 
 }
 message AutoDateHistogramAggregate {
@@ -1226,18 +1218,17 @@ message ChildrenAggregation {
 message CjkAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_CJK = 1;
-  }
-
-  Type type = 1;
+  CjkAnalyzerType type = 1;
 
   // Language value, such as `arabic` or `thai`. Defaults to `english`. Each language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words. Also accepts an array of stop words.
   StringOrStringArray stopwords = 2;
 
   string stopwords_path = 3;
 
+}
+enum CjkAnalyzerType {
+  CJK_ANALYZER_TYPE_UNSPECIFIED = 0;
+  CJK_ANALYZER_TYPE_CJK = 1;
 }
 message ClassificationInferenceOptions {
 
@@ -1733,12 +1724,7 @@ message CumulativeSumAggregation {
 message CustomAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_CUSTOM = 1;
-  }
-
-  Type type = 1;
+  CustomAnalyzerType type = 1;
 
   repeated string char_filter = 2;
 
@@ -1750,6 +1736,10 @@ message CustomAnalyzer {
 
   string tokenizer = 6;
 
+}
+enum CustomAnalyzerType {
+  CUSTOM_ANALYZER_TYPE_UNSPECIFIED = 0;
+  CUSTOM_ANALYZER_TYPE_CUSTOM = 1;
 }
 message DateDecayPlacement {
 
@@ -2158,16 +2148,15 @@ message DurationValueUnitNanos {
 message DutchAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_DUTCH = 1;
-  }
-
-  Type type = 1;
+  DutchAnalyzerType type = 1;
 
   // Language value, such as `arabic` or `thai`. Defaults to `english`. Each language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words. Also accepts an array of stop words.
   StringOrStringArray stopwords = 2;
 
+}
+enum DutchAnalyzerType {
+  DUTCH_ANALYZER_TYPE_UNSPECIFIED = 0;
+  DUTCH_ANALYZER_TYPE_DUTCH = 1;
 }
 message EpochTimeUnitMillis {
 
@@ -2236,15 +2225,14 @@ message EwmaMovingAverageAggregation {
 
   int32 window = 8;
 
-  enum Model {
-    MODEL_UNSPECIFIED = 0;
-    MODEL_EWMA = 1;
-  }
-
-  Model model = 9;
+  EwmaMovingAverageAggregationAllOfModel model = 9;
 
   EwmaModelSettings settings = 10;
 
+}
+enum EwmaMovingAverageAggregationAllOfModel {
+  EWMA_MOVING_AVERAGE_AGGREGATION_ALL_OF_MODEL_UNSPECIFIED = 0;
+  EWMA_MOVING_AVERAGE_AGGREGATION_ALL_OF_MODEL_EWMA = 1;
 }
 message ExistsQuery {
 
@@ -2725,6 +2713,20 @@ enum FieldSortNumericType {
 message FieldSortOneOf {
 
 
+  FieldValue missing = 1;
+
+  SortMode mode = 2;
+
+  NestedSortValue nested = 3;
+
+  SortOrder order = 4;
+
+  FieldType unmapped_type = 5;
+
+  FieldSortNumericType numeric_type = 6;
+
+  string format = 7;
+
 }
 message FieldSuggester {
 
@@ -2902,12 +2904,7 @@ message FiltersBucketMap {
 message FingerprintAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_FINGERPRINT = 1;
-  }
-
-  Type type = 1;
+  FingerprintAnalyzerType type = 1;
 
   string version = 2;
 
@@ -2922,6 +2919,10 @@ message FingerprintAnalyzer {
 
   string stopwords_path = 7;
 
+}
+enum FingerprintAnalyzerType {
+  FINGERPRINT_ANALYZER_TYPE_UNSPECIFIED = 0;
+  FINGERPRINT_ANALYZER_TYPE_FINGERPRINT = 1;
 }
 message FloatMap {
 
@@ -3902,7 +3903,7 @@ message Hit {
 
   string id = 3 [json_name="_id"];
 
-  HitScore score = 4 [json_name="_score"];
+  HitsMetadataMaxScore score = 4 [json_name="_score"];
 
   Explanation explanation = 5 [json_name="_explanation"];
 
@@ -3935,14 +3936,6 @@ message Hit {
   int64 version = 19 [json_name="_version"];
 
   repeated FieldValue sort = 20;
-
-}
-message HitScore {
-
-
-  float float = 1;
-
-  string string = 2;
 
 }
 message HitsMetadata {
@@ -4001,15 +3994,14 @@ message HoltMovingAverageAggregation {
 
   int32 window = 8;
 
-  enum Model {
-    MODEL_UNSPECIFIED = 0;
-    MODEL_HOLT = 1;
-  }
-
-  Model model = 9;
+  HoltMovingAverageAggregationAllOfModel model = 9;
 
   HoltLinearModelSettings settings = 10;
 
+}
+enum HoltMovingAverageAggregationAllOfModel {
+  HOLT_MOVING_AVERAGE_AGGREGATION_ALL_OF_MODEL_UNSPECIFIED = 0;
+  HOLT_MOVING_AVERAGE_AGGREGATION_ALL_OF_MODEL_HOLT = 1;
 }
 message HoltWintersModelSettings {
 
@@ -4047,15 +4039,14 @@ message HoltWintersMovingAverageAggregation {
 
   int32 window = 8;
 
-  enum Model {
-    MODEL_UNSPECIFIED = 0;
-    MODEL_HOLT_WINTERS = 1;
-  }
-
-  Model model = 9;
+  HoltWintersMovingAverageAggregationAllOfModel model = 9;
 
   HoltWintersModelSettings settings = 10;
 
+}
+enum HoltWintersMovingAverageAggregationAllOfModel {
+  HOLT_WINTERS_MOVING_AVERAGE_AGGREGATION_ALL_OF_MODEL_UNSPECIFIED = 0;
+  HOLT_WINTERS_MOVING_AVERAGE_AGGREGATION_ALL_OF_MODEL_HOLT_WINTERS = 1;
 }
 message HoltWintersType {
 
@@ -4086,17 +4077,16 @@ message HybridQuery {
 message IcuAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_ICU_ANALYZER = 1;
-  }
-
-  Type type = 1;
+  IcuAnalyzerType type = 1;
 
   IcuNormalizationType method = 2;
 
   IcuNormalizationMode mode = 3;
 
+}
+enum IcuAnalyzerType {
+  ICU_ANALYZER_TYPE_UNSPECIFIED = 0;
+  ICU_ANALYZER_TYPE_ICU_ANALYZER = 1;
 }
 enum IcuNormalizationMode {
   ICU_NORMALIZATION_MODE_UNSPECIFIED = 0;
@@ -4573,32 +4563,17 @@ message IpRangeBucketMap {
   map<string, IpRangeBucket> ip_range_bucket_map = 1;
 
 }
-message KeyedPercentilesValue {
-
-
-  float float = 1;
-
-  string string = 2;
-
-}
-message KeyedPercentilesValueMap {
-
-
-  map<string, KeyedPercentilesValue> keyed_percentiles_value_map = 1;
-
-}
 message KeywordAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_KEYWORD = 1;
-  }
-
-  Type type = 1;
+  KeywordAnalyzerType type = 1;
 
   string version = 2;
 
+}
+enum KeywordAnalyzerType {
+  KEYWORD_ANALYZER_TYPE_UNSPECIFIED = 0;
+  KEYWORD_ANALYZER_TYPE_KEYWORD = 1;
 }
 enum Kilometers {
   KILOMETERS_UNSPECIFIED = 0;
@@ -4646,17 +4621,16 @@ message KnnQueryRescore {
 message KuromojiAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_KUROMOJI = 1;
-  }
-
-  Type type = 1;
+  KuromojiAnalyzerType type = 1;
 
   KuromojiTokenizationMode mode = 2;
 
   string user_dictionary = 3;
 
+}
+enum KuromojiAnalyzerType {
+  KUROMOJI_ANALYZER_TYPE_UNSPECIFIED = 0;
+  KUROMOJI_ANALYZER_TYPE_KUROMOJI = 1;
 }
 enum KuromojiTokenizationMode {
   KUROMOJI_TOKENIZATION_MODE_UNSPECIFIED = 0;
@@ -4704,12 +4678,7 @@ enum Language {
 message LanguageAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_LANGUAGE = 1;
-  }
-
-  Type type = 1;
+  LanguageAnalyzerType type = 1;
 
   string version = 2;
 
@@ -4722,6 +4691,10 @@ message LanguageAnalyzer {
 
   string stopwords_path = 6;
 
+}
+enum LanguageAnalyzerType {
+  LANGUAGE_ANALYZER_TYPE_UNSPECIFIED = 0;
+  LANGUAGE_ANALYZER_TYPE_LANGUAGE = 1;
 }
 message LaplaceSmoothingModel {
 
@@ -4807,15 +4780,14 @@ message LinearMovingAverageAggregation {
 
   int32 window = 8;
 
-  enum Model {
-    MODEL_UNSPECIFIED = 0;
-    MODEL_LINEAR = 1;
-  }
-
-  Model model = 9;
+  LinearMovingAverageAggregationAllOfModel model = 9;
 
   google.protobuf.Struct settings = 10;
 
+}
+enum LinearMovingAverageAggregationAllOfModel {
+  LINEAR_MOVING_AVERAGE_AGGREGATION_ALL_OF_MODEL_UNSPECIFIED = 0;
+  LINEAR_MOVING_AVERAGE_AGGREGATION_ALL_OF_MODEL_LINEAR = 1;
 }
 message LongRareTermsAggregate {
 
@@ -5882,12 +5854,7 @@ message NeuralQuery {
 message NoriAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_NORI = 1;
-  }
-
-  Type type = 1;
+  NoriAnalyzerType type = 1;
 
   string version = 2;
 
@@ -5897,6 +5864,10 @@ message NoriAnalyzer {
 
   string user_dictionary = 5;
 
+}
+enum NoriAnalyzerType {
+  NORI_ANALYZER_TYPE_UNSPECIFIED = 0;
+  NORI_ANALYZER_TYPE_NORI = 1;
 }
 enum NoriDecompoundMode {
   NORI_DECOMPOUND_MODE_UNSPECIFIED = 0;
@@ -6075,12 +6046,7 @@ message ParentIdQuery {
 message PatternAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_PATTERN = 1;
-  }
-
-  Type type = 1;
+  PatternAnalyzerType type = 1;
 
   string version = 2;
 
@@ -6093,6 +6059,10 @@ message PatternAnalyzer {
   // Language value, such as `arabic` or `thai`. Defaults to `english`. Each language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words. Also accepts an array of stop words.
   StringOrStringArray stopwords = 6;
 
+}
+enum PatternAnalyzerType {
+  PATTERN_ANALYZER_TYPE_UNSPECIFIED = 0;
+  PATTERN_ANALYZER_TYPE_PATTERN = 1;
 }
 message PercentileRanksAggregation {
 
@@ -6120,7 +6090,7 @@ message PercentileRanksAggregation {
 message Percentiles {
 
     oneof percentiles {
-        KeyedPercentilesValueMap keyed_percentiles_value_map = 1;
+        TTestAggregateAllOfValueMap t_test_aggregate_all_of_value_map = 1;
 
         ArrayPercentilesItemArray array_percentiles_item_array = 2;
 
@@ -6234,17 +6204,16 @@ message PhaseTook {
 message PhoneAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_PHONE = 1;
-    TYPE_PHONE_SEARCH = 2;
-  }
-
-  Type type = 1;
+  PhoneAnalyzerType type = 1;
 
   // Optional ISO 3166 country code, defaults to \"ZZ\" (unknown region).
   string phone_region = 2 [json_name="phone-region"];
 
+}
+enum PhoneAnalyzerType {
+  PHONE_ANALYZER_TYPE_UNSPECIFIED = 0;
+  PHONE_ANALYZER_TYPE_PHONE = 1;
+  PHONE_ANALYZER_TYPE_PHONE_SEARCH = 2;
 }
 message PhraseSuggest {
 
@@ -7731,12 +7700,7 @@ message SignificantTextAggregation {
 message SimpleAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_SIMPLE = 1;
-  }
-
-  Type type = 1;
+  SimpleMovingAverageAggregationAllOfModel type = 1;
 
   string version = 2;
 
@@ -7761,15 +7725,14 @@ message SimpleMovingAverageAggregation {
 
   int32 window = 8;
 
-  enum Model {
-    MODEL_UNSPECIFIED = 0;
-    MODEL_SIMPLE = 1;
-  }
-
-  Model model = 9;
+  SimpleMovingAverageAggregationAllOfModel model = 9;
 
   google.protobuf.Struct settings = 10;
 
+}
+enum SimpleMovingAverageAggregationAllOfModel {
+  SIMPLE_MOVING_AVERAGE_AGGREGATION_ALL_OF_MODEL_UNSPECIFIED = 0;
+  SIMPLE_MOVING_AVERAGE_AGGREGATION_ALL_OF_MODEL_SIMPLE = 1;
 }
 enum SimpleQueryStringFlag {
   SIMPLE_QUERY_STRING_FLAG_UNSPECIFIED = 0;
@@ -7795,10 +7758,6 @@ message SimpleQueryStringFlags {
         string multiple = 2;
 
     }
-
-}
-message SimpleQueryStringFlagsOneOf {
-
 
 }
 message SimpleQueryStringQuery {
@@ -7896,13 +7855,12 @@ message SlicedScroll {
 message SmartcnAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_SMARTCN = 1;
-  }
+  SmartcnAnalyzerType type = 1;
 
-  Type type = 1;
-
+}
+enum SmartcnAnalyzerType {
+  SMARTCN_ANALYZER_TYPE_UNSPECIFIED = 0;
+  SMARTCN_ANALYZER_TYPE_SMARTCN = 1;
 }
 message SmoothingModel {
 
@@ -7917,12 +7875,7 @@ message SmoothingModel {
 message SnowballAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_SNOWBALL = 1;
-  }
-
-  Type type = 1;
+  SnowballAnalyzerType type = 1;
 
   string version = 2;
 
@@ -7931,6 +7884,10 @@ message SnowballAnalyzer {
   // Language value, such as `arabic` or `thai`. Defaults to `english`. Each language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words. Also accepts an array of stop words.
   StringOrStringArray stopwords = 4;
 
+}
+enum SnowballAnalyzerType {
+  SNOWBALL_ANALYZER_TYPE_UNSPECIFIED = 0;
+  SNOWBALL_ANALYZER_TYPE_SNOWBALL = 1;
 }
 enum SnowballLanguage {
   SNOWBALL_LANGUAGE_UNSPECIFIED = 0;
@@ -7984,7 +7941,7 @@ message SortOptions {
 
         string string = 3;
 
-        SortOptionsOneOf sort_options_one_of = 4;
+        SortOptionsOneOf2 sort_options_one_of2 = 4;
 
         FieldSortMap field_sort_map = 5;
 
@@ -8004,6 +7961,23 @@ enum SortOptionsOneOf {
 enum SortOptionsOneOf1 {
   SORT_OPTIONS_ONE_OF1_UNSPECIFIED = 0;
   SORT_OPTIONS_ONE_OF1__DOC = 1;
+}
+message SortOptionsOneOf2 {
+
+
+  ScoreSort score = 1 [json_name="_score"];
+
+  ScoreSort doc = 2 [json_name="_doc"];
+
+  GeoDistanceSort geo_distance = 3 [json_name="_geo_distance"];
+
+  ScriptSort script = 4 [json_name="_script"];
+
+}
+enum SortOptionsOneOf2Not {
+  SORT_OPTIONS_ONE_OF2_NOT_UNSPECIFIED = 0;
+  SORT_OPTIONS_ONE_OF2_NOT__DOC = 1;
+  SORT_OPTIONS_ONE_OF2_NOT__SCORE = 2;
 }
 enum SortOrder {
   SORT_ORDER_UNSPECIFIED = 0;
@@ -8215,12 +8189,7 @@ message SpanWithinQuery {
 message StandardAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_STANDARD = 1;
-  }
-
-  Type type = 1;
+  StandardAnalyzerType type = 1;
 
   int32 max_token_length = 2;
 
@@ -8228,20 +8197,24 @@ message StandardAnalyzer {
   StringOrStringArray stopwords = 3;
 
 }
+enum StandardAnalyzerType {
+  STANDARD_ANALYZER_TYPE_UNSPECIFIED = 0;
+  STANDARD_ANALYZER_TYPE_STANDARD = 1;
+}
 message StandardDeviationBounds {
 
 
-  StandardDeviationBoundsUpper upper = 1;
+  TTestAggregateAllOfValue upper = 1;
 
-  StandardDeviationBoundsLower lower = 2;
+  TTestAggregateAllOfValue lower = 2;
 
-  StandardDeviationBoundsUpperPopulation upper_population = 3;
+  TTestAggregateAllOfValue upper_population = 3;
 
-  StandardDeviationBoundsLowerPopulation lower_population = 4;
+  TTestAggregateAllOfValue lower_population = 4;
 
-  StandardDeviationBoundsUpperSampling upper_sampling = 5;
+  TTestAggregateAllOfValue upper_sampling = 5;
 
-  StandardDeviationBoundsLowerSampling lower_sampling = 6;
+  TTestAggregateAllOfValue lower_sampling = 6;
 
 }
 message StandardDeviationBoundsAsString {
@@ -8258,54 +8231,6 @@ message StandardDeviationBoundsAsString {
   string upper_sampling = 5;
 
   string lower_sampling = 6;
-
-}
-message StandardDeviationBoundsLower {
-
-
-  float float = 1;
-
-  string string = 2;
-
-}
-message StandardDeviationBoundsLowerPopulation {
-
-
-  float float = 1;
-
-  string string = 2;
-
-}
-message StandardDeviationBoundsLowerSampling {
-
-
-  float float = 1;
-
-  string string = 2;
-
-}
-message StandardDeviationBoundsUpper {
-
-
-  float float = 1;
-
-  string string = 2;
-
-}
-message StandardDeviationBoundsUpperPopulation {
-
-
-  float float = 1;
-
-  string string = 2;
-
-}
-message StandardDeviationBoundsUpperSampling {
-
-
-  float float = 1;
-
-  string string = 2;
 
 }
 message StatsAggregate {
@@ -8411,12 +8336,7 @@ message StatsBucketAggregation {
 message StopAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_STOP = 1;
-  }
-
-  Type type = 1;
+  StopAnalyzerType type = 1;
 
   string version = 2;
 
@@ -8425,6 +8345,10 @@ message StopAnalyzer {
 
   string stopwords_path = 4;
 
+}
+enum StopAnalyzerType {
+  STOP_ANALYZER_TYPE_UNSPECIFIED = 0;
+  STOP_ANALYZER_TYPE_STOP = 1;
 }
 message StopWords {
 
@@ -8770,6 +8694,12 @@ message TTestAggregateAllOfValue {
   float float = 1;
 
   string string = 2;
+
+}
+message TTestAggregateAllOfValueMap {
+
+
+  map<string, TTestAggregateAllOfValue> t_test_aggregate_all_of_value_map = 1;
 
 }
 message TTestAggregation {
@@ -9560,10 +9490,6 @@ message WaitForActiveShards {
     }
 
 }
-message WaitForActiveShardsOneOf {
-
-
-}
 enum Week {
   WEEK_UNSPECIFIED = 0;
   WEEK_WEEK = 1;
@@ -9611,15 +9537,14 @@ message WeightedAvgAggregate {
 message WhitespaceAnalyzer {
 
 
-  enum Type {
-    TYPE_UNSPECIFIED = 0;
-    TYPE_WHITESPACE = 1;
-  }
-
-  Type type = 1;
+  WhitespaceAnalyzerType type = 1;
 
   string version = 2;
 
+}
+enum WhitespaceAnalyzerType {
+  WHITESPACE_ANALYZER_TYPE_UNSPECIFIED = 0;
+  WHITESPACE_ANALYZER_TYPE_WHITESPACE = 1;
 }
 message WildcardQuery {
 
