@@ -7,7 +7,7 @@ import path, { resolve } from 'path';
 
 let config_filtered_path: string[] | undefined;
 try {
-  const config = read_yaml(path.join(__dirname, 'filter_path.yaml'));
+  const config = read_yaml(path.join(__dirname, 'config','target_api.yaml'));
   config_filtered_path = config.paths;
 } catch (e) {
   console.error(e);

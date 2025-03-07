@@ -1,8 +1,11 @@
 name: Proto Convert
 
 on:
-  repository_dispatch:
-    types: [Proto-Convert]
+  workflow_dispatch:
+    inputs:
+      input_param:
+        description: 'Description of the input parameter'
+        required: false
 
 jobs:
   build:
@@ -48,7 +51,7 @@ jobs:
 
       - name: Convert protobuf
         run: |
-          java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/proto-convert/src/protobuf-generator-config.yaml
+          java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/proto-convert/src/config/protobuf-generator-config.yaml
 
       - name: Configure Git User
         run: |

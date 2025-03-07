@@ -9,5 +9,5 @@ additionalProperties:
   aggregateModelsName: aggregated_models
   packageName: opensearch
 inlineSchemaOptions:
-  RESOLVE_INLINE_ENUMS: false
-  SKIP_SCHEMA_REUSE: true
+  RESOLVE_INLINE_ENUMS: true
+  SKIP_SCHEMA_REUSE: false

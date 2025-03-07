@@ -1,4 +1,0 @@
-.openapi-generator-ignore
-README.md
-models/aggregated_models.proto
-services/default_service.proto
