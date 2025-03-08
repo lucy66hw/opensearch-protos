@@ -1,13 +1,16 @@
 generatorName: protobuf-schema
 outputDir: spec/protos
 inputSpec: build/processed-opensearch-openapi.yaml
+templateDir: tools/proto-convert/src/config/protobuf-schema-template/
 additionalProperties:
   addJsonNameAnnotation: true
   flattenComplexType: true
   numberedFieldNumberList: true
   startEnumsWithUnspecified: true
   aggregateModelsName: aggregated_models
-  packageName: opensearch
+  apiPackage: opensearch.api
+  modelPackage: opensearch.model
 inlineSchemaOptions:
   RESOLVE_INLINE_ENUMS: true
   SKIP_SCHEMA_REUSE: true
+
