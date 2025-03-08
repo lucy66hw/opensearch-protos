@@ -1,4 +1,4 @@
 .openapi-generator-ignore
 README.md
-models/aggregated_models.proto
-services/default_service.proto
+opensearch.api/default_service.proto
+opensearch.model/aggregated_models.proto
