@@ -1685,7 +1685,10 @@ message CoordsGeoBounds {
   double right = 4;
 
 }
+message CreateOperation {
 
+
+}
 message CumulativeCardinalityAggregate {
 
 
@@ -1760,7 +1763,10 @@ message DateDecayPlacement {
   string scale = 4;
 
 }
+message DateFormat {
 
+
+}
 message DateHistogramAggregate {
 
 
@@ -1837,7 +1843,10 @@ message DateHistogramBucketMap {
   map<string, DateHistogramBucket> date_histogram_bucket_map = 1;
 
 }
+message DateMath {
 
+
+}
 message DateRangeAggregate {
 
 
@@ -1946,7 +1955,10 @@ message DecayPlacement {
   NumericDecayPlacement numeric_decay_placement = 3;
 
 }
+message DeleteOperation {
 
+
+}
 message DerivativeAggregate {
 
 
@@ -2017,7 +2029,10 @@ message DisMaxQuery {
   float tie_breaker = 4;
 
 }
+message Distance {
 
+
+}
 message DistanceFeatureQuery {
 
 
@@ -2122,7 +2137,22 @@ message DoubleTermsBucketMap {
   map<string, DoubleTermsBucket> double_terms_bucket_map = 1;
 
 }
+message Duration {
 
+
+}
+message DurationLarge {
+
+
+}
+message DurationValueUnitMillis {
+
+
+}
+message DurationValueUnitNanos {
+
+
+}
 message DutchAnalyzer {
 
 
@@ -2136,7 +2166,10 @@ enum DutchAnalyzerType {
   DUTCH_ANALYZER_TYPE_UNSPECIFIED = 0;
   DUTCH_ANALYZER_TYPE_DUTCH = 1;
 }
+message EpochTimeUnitMillis {
 
+
+}
 message Error {
 
 
@@ -2590,7 +2623,10 @@ message FetchProfileDebug {
   int32 fast_path = 2;
 
 }
+message Field {
 
+
+}
 message FieldAndFormat {
 
     oneof field_and_format {
@@ -3200,7 +3236,10 @@ enum GeoExecution {
   GEO_EXECUTION_INDEXED = 1;
   GEO_EXECUTION_MEMORY = 2;
 }
+message GeoHash {
 
+
+}
 message GeoHashGridAggregate {
 
 
@@ -3395,7 +3434,10 @@ enum GeoShapeRelation {
   GEO_SHAPE_RELATION_INTERSECTS = 3;
   GEO_SHAPE_RELATION_WITHIN = 4;
 }
+message GeoTile {
 
+
+}
 message GeoTileGridAggregate {
 
 
@@ -3446,7 +3488,10 @@ message GeoTileGridBucketMap {
   map<string, GeoTileGridBucket> geo_tile_grid_bucket_map = 1;
 
 }
+message GeoTilePrecision {
 
+
+}
 enum GeoValidationMethod {
   GEO_VALIDATION_METHOD_UNSPECIFIED = 0;
   GEO_VALIDATION_METHOD_COERCE = 1;
@@ -4070,7 +4115,10 @@ enum IcuNormalizationType {
   ICU_NORMALIZATION_TYPE_NFKC = 2;
   ICU_NORMALIZATION_TYPE_NFKC_CF = 3;
 }
+message Id {
 
+
+}
 message Ids {
 
     oneof ids {
@@ -4092,12 +4140,22 @@ message IdsQuery {
   Ids values = 3;
 
 }
+message IgnoreUnmapped {
 
+
+}
 enum Inches {
   INCHES_UNSPECIFIED = 0;
   INCHES_IN = 1;
 }
+message IndexName {
 
+
+}
+message IndexOperation {
+
+
+}
 message Indices {
 
     oneof indices {
@@ -5728,7 +5786,10 @@ message MutualInformationHeuristic {
   bool include_negatives = 2;
 
 }
+message Name {
 
+
+}
 enum NauticalMiles {
   NAUTICAL_MILES_UNSPECIFIED = 0;
   NAUTICAL_MILES_NMI = 1;
@@ -6770,7 +6831,10 @@ message RankContainer {
   RrfRank rrf = 1;
 
 }
+message RankFeatureFunctionLinear {
 
+
+}
 message RankFeatureFunctionLogarithm {
 
 
@@ -6931,6 +6995,10 @@ message RegressionInferenceOptions {
   int32 num_top_feature_importance_values = 2;
 
 }
+message RelationName {
+
+
+}
 message Rescore {
 
 
@@ -7072,6 +7140,14 @@ message RootCause {
   string type = 1;
 
   string reason = 2;
+
+}
+message Routing {
+
+
+}
+message RoutingInQueryString {
+
 
 }
 message RrfRank {
@@ -7245,7 +7321,10 @@ message ScriptedMetricAggregation {
   Script reduce_script = 8;
 
 }
+message ScrollId {
 
+
+}
 message SearchProfile {
 
 
@@ -7375,7 +7454,10 @@ enum Second {
   SECOND_SECOND = 1;
   SECOND_1S = 2;
 }
+message SequenceNumber {
 
+
+}
 message SerialDifferencingAggregation {
 
 
@@ -8350,7 +8432,10 @@ enum StopAnalyzerType {
   STOP_ANALYZER_TYPE_UNSPECIFIED = 0;
   STOP_ANALYZER_TYPE_STOP = 1;
 }
+message StopWords {
 
+
+}
 message StoredScriptId {
 
 
@@ -9038,7 +9123,10 @@ enum TextQueryType {
   TEXT_QUERY_TYPE_PHRASE = 5;
   TEXT_QUERY_TYPE_PHRASE_PREFIX = 6;
 }
+message TimeZone {
 
+
+}
 message TopHitsAggregate {
 
 
@@ -9198,7 +9286,10 @@ message TrackHits {
     }
 
 }
+message Type {
 
+
+}
 message TypeQuery {
 
 
@@ -9210,7 +9301,18 @@ message TypeQuery {
   string value = 3;
 
 }
+message Uint {
 
+
+}
+message UnitMillis {
+
+
+}
+message UnitNanos {
+
+
+}
 message UnmappedRareTermsAggregate {
 
 
@@ -9434,7 +9536,14 @@ message VariableWidthHistogramBucketMap {
   map<string, VariableWidthHistogramBucket> variable_width_histogram_bucket_map = 1;
 
 }
+message VersionNumber {
 
+
+}
+message VersionString {
+
+
+}
 enum VersionType {
   VERSION_TYPE_UNSPECIFIED = 0;
   VERSION_TYPE_EXTERNAL = 1;
