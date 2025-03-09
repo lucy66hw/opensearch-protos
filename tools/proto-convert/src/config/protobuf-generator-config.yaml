@@ -8,8 +8,6 @@ additionalProperties:
   numberedFieldNumberList: true
   startEnumsWithUnspecified: true
   aggregateModelsName: aggregated_models
-  apiPackage: opensearch.api
-  modelPackage: opensearch.model
 inlineSchemaOptions:
   RESOLVE_INLINE_ENUMS: true
   SKIP_SCHEMA_REUSE: true
