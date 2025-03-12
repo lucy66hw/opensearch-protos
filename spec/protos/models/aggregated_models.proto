@@ -1451,7 +1451,7 @@ message CompletionSuggestOption {
 
   optional  string text = 9;
 
-  optional  float score = 10;
+  optional  float score1 = 10;
 
 }
 message CompletionSuggestOptionArray {
@@ -6205,7 +6205,7 @@ message PercolateQuery {
   optional  string index = 7;
 
   // The suffix used for the `_percolator_document_slot` field when multiple `percolate` queries are specified.
-  optional  string name = 8;
+  optional  string name1 = 8;
 
   // Preference used to fetch document to percolate.
   optional  string preference = 9;

@@ -36,10 +36,15 @@ jobs:
           token: ${{ secrets.OAS_PAT }}
           preRelease: true
 
-      - name: List Downloaded Files
-        run: ls -R $GITHUB_WORKSPACE
       - name: Run Proto Conversion
-        run: npm ci && npm run convert-proto
+        run: npm ci && npm run preprocessing
+
+      - name: Create Temp Directory for OpenAPI Generator Output
+        run: |
+          TEMP_OUTPUT="${RUNNER_TEMP}/protobuf-output"
+          mkdir -p "$TEMP_OUTPUT"
+          echo "TEMP_OUTPUT=$TEMP_OUTPUT" >> $GITHUB_ENV
+          echo "Temp output directory is set to: $TEMP_OUTPUT"
 
       - name: Clone Protobuf Generator Repository
         run: git clone --branch aggregate_protos https://github.com/lucy66hw/openapi-generator.git cloned-repo
@@ -51,7 +56,10 @@ jobs:
 
       - name: Convert protobuf
         run: |
-          java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/proto-convert/src/config/protobuf-generator-config.yaml
+          java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/proto-convert/src/config/protobuf-generator-config.yaml -o $TEMP_OUTPUT
+
+      - name: Post Process Protobuf
+        run: npm run preprocessing
 
       - name: Configure Git User
         run: |

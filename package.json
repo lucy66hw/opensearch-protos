@@ -5,7 +5,8 @@
   "author": "opensearch-project",
   "license": "Apache-2.0",
   "scripts": {
-    "convert-proto": "ts-node tools/proto-convert/src/ProtoPreprocessing.ts"
+    "preprocessing": "ts-node tools/proto-convert/src/PreProcessing.ts",
+    "postprocessing": "ts-node tools/proto-convert/src/PostProcessing.ts"
   },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
@@ -51,6 +52,8 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.1",
     "typescript": "<5.4.0",
-    "yaml": "^2.3.4"
+    "yaml": "^2.3.4",
+    "protobufjs": "^6.11.2",
+    "util": "^0.12.5"
   }
 }

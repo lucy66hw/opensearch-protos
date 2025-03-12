@@ -43,7 +43,7 @@ const logger = new Logger();
 const filter = new Filter(logger);
 const sanitizer = new Sanitizer();
 try {
-  logger.info(`Preprocessing ${opts.filtered_path.join(', ')} into ${opts.output} ...`)
+  logger.info(`PreProcessing ${opts.filtered_path.join(', ')} into ${opts.output} ...`)
   const original_spec = read_yaml(opts.input);
   const filtered_spec = filter.filter_spec(original_spec, opts.filtered_path);
   const sanitized_spec = sanitizer.sanitize_spec(filtered_spec);
