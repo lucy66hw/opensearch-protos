@@ -4,12 +4,15 @@ package opensearch;
 
 enum Additive {
   ADDITIVE_UNSPECIFIED = 0;
-  ADDITIVE_ADD = 1;
+  ADDITIVE_MINUS = 1;
+  ADDITIVE_ADD = 2;
 }
 message AdjacencyMatrixAggregate {
 
 
   google.protobuf.Struct meta = 1;
+
+  bool aaa = 3;
 
   optional  int64 buckets = 2;
 
@@ -18,6 +21,7 @@ message AdjacencyMatrixAggregate {
 message AdjacencyMatrixBucketMap {
 
 
+  map<string, bool> abc = 2;
   map<string, bool> adjacency_matrix_bucket_map = 1;
 
 }
@@ -25,10 +29,30 @@ message AdjacencyMatrixBucketMap {
 message RandomScoreFunctionSeed {
 
   oneof random_score_function_seed {
+
+    AdjacencyMatrixAggregate agg = 3;
+
     int32 int32 = 1;
 
     string string = 2;
 
   }
+
+}
+
+message BoostingQuery {
+
+
+  // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
+  optional  float boost = 1;
+
+  optional  string name = 2 [json_name="_name"];
+
+  // Floating point number between 0 and 1.0 used to decrease the relevance scores of documents matching the `negative` query.
+  optional  float negative_boost = 3;
+
+  optional  bool negative = 4;
+
+  optional  string positive = 5;
 
 }
