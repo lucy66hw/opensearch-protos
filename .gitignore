@@ -48,3 +48,4 @@ build/
 #tooling
 spec/protos/.openapi-generator-ignore
 spec/protos/README.md
+cloned-repo

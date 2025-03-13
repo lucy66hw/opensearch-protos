@@ -1,8 +1,9 @@
 import {Command, Option} from "@commander-js/extra-typings";
-import {resolve} from "path";
+import path, {resolve} from "path";
 import Logger from "./utils/logger";
 import {ProtoFieldNumberMatcher} from "./ProtoFieldNumberMatcher";
-
+import {util} from "protobufjs";
+import fs = util.fs;
 
 const command = new Command()
     .description('Post Process Proto Files By Matching Field Numbers')
@@ -26,13 +27,19 @@ const opts: PostProcessingOpts = {
 const logger = new Logger();
 const matcher = new ProtoFieldNumberMatcher(logger);
 try {
-    logger.info(`PostProcessing matching ...`)
-    const fileSourcePath = opts.source + "/models/aggregated_models.proto";
-    const fileTargetPath = opts.target + "/models/aggregated_models.proto";
-    matcher.match_proto(fileSourcePath, fileTargetPath)
+    for (const folder of ["models", "services"]) {
+        const source = path.join(opts.source, folder);
+        const target = path.join(opts.target, folder);
+        const items = fs.readdirSync(source);
+        for(const item of items) {
+            const sourceFilePath = path.join(source, item);
+            const targetFilePath = path.join(target, item);
+            matcher.match_proto(sourceFilePath, targetFilePath)
+        }
+    }
 
 } catch (err) {
-    console.error('Error in preprocessing:', err);
+    logger.error(`Error in preprocessing: ${err}`);
     process.exit(1);
 }
 logger.info('Done.')
