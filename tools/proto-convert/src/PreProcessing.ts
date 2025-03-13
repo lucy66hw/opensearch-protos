@@ -15,7 +15,7 @@ try {
 }
 const default_api_to_proto = config_filtered_path ?? ['/_search'];
 const default_api_to_proto_str = default_api_to_proto.join(',');
-console.log(default_api_to_proto_str)
+
 const command = new Command()
   .description('Preprocess an OpenAPI spec by filtering for specific paths and then sanitizing it.')
   .addOption(new Option('-i, --input <path>', 'input YAML file').default((resolve(__dirname, '../../../opensearch-openapi.yaml'))))
@@ -50,7 +50,7 @@ try {
   write_yaml(opts.output, sanitized_spec);
 
 } catch (err) {
-  console.error('Error in preprocessing:', err);
+  logger.error(`Error in preprocessing: ${err}`);
   process.exit(1);
 }
 logger.info('Done.')

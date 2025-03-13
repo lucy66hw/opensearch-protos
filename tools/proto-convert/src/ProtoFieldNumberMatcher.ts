@@ -17,7 +17,7 @@ export class ProtoFieldNumberMatcher {
     public match_proto(proto_source: string, proto_target: string): void {
         this.loadSourceProtoSchema(proto_source)
         this.loadTargetSchema(proto_target)
-        this.write_replace_file(proto_target)
+        this.write_replace_file(proto_target, proto_source)
     }
     loadSourceProtoSchema(filePath: string) {
         // Load and parse the .proto file
@@ -106,7 +106,7 @@ export class ProtoFieldNumberMatcher {
             }
         }
     }
-    write_replace_file(filePath: string): void {
+    write_replace_file(filePath: string, writePath: string): void {
         const protoContent = fs.readFileSync(filePath, 'utf-8');
         const messageRegex = /message\s+(\w+)\s*{([^}]*)}/g;
         const fieldRegex = /\s*(\w+)\s+(\w+)\s*=\s*(\d+);/g;
@@ -125,19 +125,19 @@ export class ProtoFieldNumberMatcher {
 
                 const uniqueKey = `${messageName}_${fieldName}`;
                 var newFieldNumber = 10000
-                if (map.has(uniqueKey) && map.get(uniqueKey) !== undefined) {
+                if (map.has(uniqueKey)) {
                     newFieldNumber = map.get(uniqueKey) ?? newFieldNumber;
                     console.log(`Updating ${uniqueKey}: ${fieldNumber} -> ${newFieldNumber}`);
                 }
                 modifiedContent = modifiedContent.replace(
-                    new RegExp(`(\\s*${fieldType}\\s+${fieldName}\\s*=\\s*)${fieldNumber}(\\s*;)`, "g"),
+                    new RegExp(`(\\s*(?:optional\\s+|repeated\\s+)?${fieldType}\\s+${fieldName}\\s*=\\s*)${fieldNumber}(\\s*;)`, "g"),
                     `$1${newFieldNumber}$2`
                 );
             }
         }
 
-        write_text('modified.proto', modifiedContent);
-        this.logger.info('Modified proto file saved as modified.proto');
+        write_text(writePath, modifiedContent);
+        this.logger.info(`Modified proto file saved as ${writePath}`);
     }
 }
 
