@@ -4,15 +4,12 @@ package opensearch;
 
 enum Additive {
   ADDITIVE_UNSPECIFIED = 0;
-  ADDITIVE_MINUS = 1;
-  ADDITIVE_ADD = 2;
+  ADDITIVE_ADD = 1;
 }
 message AdjacencyMatrixAggregate {
 
 
   google.protobuf.Struct meta = 1;
-
-  bool aaa = 3;
 
   optional  int64 buckets = 2;
 
@@ -20,8 +17,6 @@ message AdjacencyMatrixAggregate {
 
 message AdjacencyMatrixBucketMap {
 
-
-  map<string, bool> abc = 2;
   map<string, bool> adjacency_matrix_bucket_map = 1;
 
 }
@@ -29,8 +24,6 @@ message AdjacencyMatrixBucketMap {
 message RandomScoreFunctionSeed {
 
   oneof random_score_function_seed {
-
-    AdjacencyMatrixAggregate agg = 3;
 
     int32 int32 = 1;
 
