@@ -1,5 +1,4 @@
 import { format } from "util";
-import * as path from "path";
 import * as protobuf from "protobufjs";
 import * as fs from "fs"
 import Logger from './utils/logger';
@@ -15,25 +14,27 @@ export class ProtoFieldNumberMatcher {
     }
 
     public match_proto(proto_source: string, proto_target: string): void {
-        this.loadSourceProtoSchema(proto_source)
-        this.loadTargetSchema(proto_target)
+        // Parse the source .proto file and save to map.
+        const source_file = fs.readFileSync(proto_source, "utf-8");
+        if (!source_file) {
+            this.logger.error(`Source proto file not found: ${proto_source}`);
+            return;
+        }
+        const source_proto = protobuf.parse(source_file, { keepCase: true }).root;
+        this.collect_proto_ids(source_proto)
+
+        // Parse the target .proto file and replace the field numbers.
+        const target_file = fs.readFileSync(proto_target, "utf-8");
+        if (!target_file) {
+            this.logger.error(`Target proto file not found: ${proto_target}`);
+            return;
+        }
+        const target_proto = protobuf.parse(target_file, { keepCase: true }).root;
+        this.map_proto_ids(target_proto)
+
         this.write_replace_file(proto_target, proto_source)
     }
-    loadSourceProtoSchema(filePath: string) {
-        // Load and parse the .proto file
-        const protoContent = fs.readFileSync(filePath, "utf-8");
-        const root = protobuf.parse(protoContent, { keepCase: true }).root;
-        this.traverseSourceAndSave(root)
-    }
-
-    loadTargetSchema(filePath: string) {
-        // Load and parse the .proto file
-        const protoContent = fs.readFileSync(filePath, "utf-8");
-        const root = protobuf.parse(protoContent, { keepCase: true }).root;
-        this.traverseTargetAndMapping(root)
-        return root
-    }
-    getMaxFieldId (type: protobuf.Type): number {
+    get_max_message_id (type: protobuf.Type): number {
         let max = 0
         for (const [fieldName, field] of Object.entries(type.fields)) {
             if(field.id > max){
@@ -42,7 +43,7 @@ export class ProtoFieldNumberMatcher {
         }
         return max
     }
-    getMaxFieldIdEnum (type: protobuf.Enum): number {
+    get_max_enum_id (type: protobuf.Enum): number {
         let max = 0
         for (const [fieldName, field] of Object.entries(type.values)) {
             if(field > max){
@@ -52,23 +53,21 @@ export class ProtoFieldNumberMatcher {
         return max
     }
 
-    traverseTargetAndMapping(namespace: protobuf.NamespaceBase) {
+    map_proto_ids(namespace: protobuf.NamespaceBase) {
         if (!namespace.nested) return;
 
         for (const [name, definition] of Object.entries(namespace.nested)) {
             const fullName = `${name}`;
             if(fullName.startsWith("google")) continue
             if (definition instanceof protobuf.Type) {
-                var max = this.getMaxFieldId(definition)
+                var max = this.get_max_message_id(definition)
                 for (const [fieldName, field] of Object.entries(definition.fields)) {
                     const messageFieldName = format(MESSAGE_FIELD_TEMPLATE, fullName, fieldName);
                     if(!map.has(messageFieldName)){
-                        map.set(messageFieldName, max++)
-                        this.logger.info(`Mapping ${messageFieldName} to ${max}`)
-                    }
+                        map.set(messageFieldName, max++)}
                 }
             } else if (definition instanceof protobuf.Enum) {
-                var max = this.getMaxFieldIdEnum(definition)
+                var max = this.get_max_enum_id(definition)
                 for(let [fieldName, field] of Object.entries(definition.values)){
                     const messageFieldName = format(MESSAGE_FIELD_TEMPLATE, fullName, fieldName);
                     if(!map.has(messageFieldName)){
@@ -76,14 +75,14 @@ export class ProtoFieldNumberMatcher {
                     }
                 }
             } else if (definition instanceof protobuf.Namespace) {
-                this.traverseTargetAndMapping(definition);
+                this.map_proto_ids(definition);
             } else {
                 this.logger.warn(`Unknown Definition: ${fullName}`);
             }
         }
     }
 
-    traverseSourceAndSave(namespace: protobuf.NamespaceBase) {
+    collect_proto_ids(namespace: protobuf.NamespaceBase) {
         if (!namespace.nested) return;
 
         for (const [name, definition] of Object.entries(namespace.nested)) {
@@ -100,44 +99,111 @@ export class ProtoFieldNumberMatcher {
                     map.set(messageFieldName, field)
                 }
             } else if (definition instanceof protobuf.Namespace) {
-                this.traverseSourceAndSave(definition);
+                this.collect_proto_ids(definition);
             } else {
                 this.logger.info(`Unknown Definition: ${fullName}`);
             }
         }
     }
     write_replace_file(filePath: string, writePath: string): void {
-        const protoContent = fs.readFileSync(filePath, 'utf-8');
-        const messageRegex = /message\s+(\w+)\s*{([^}]*)}/g;
-        const fieldRegex = /\s*(\w+)\s+(\w+)\s*=\s*(\d+);/g;
 
+        const protoContent = fs.readFileSync(filePath, 'utf-8');
+        let modifiedContent = this.reconstruct_message(protoContent);
+        modifiedContent = this.reconstruct_enum(modifiedContent)
+        write_text(writePath, modifiedContent);
+        this.logger.info(`Modified proto file saved as ${writePath}`);
+    }
+
+    reconstruct_enum(protoContent: string): string{
+        const enumRegex = /enum\s+(\w+)\s*{([^}]*)}/g;
+        let match;
+        let modifiedContent = protoContent;
+        while ((match = enumRegex.exec(protoContent)) !== null) {
+            const enumName = match[1];
+            const enumeBody = match[2];
+            let lines = enumeBody.split("\n");
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i];
+                let trimmedLine = line.trim();
+
+                if (!trimmedLine.includes("=") || !trimmedLine.endsWith(";")) {
+                    continue;
+                }
+
+                const leadingSpaces = line.match(/^\s*/)?.[0] || "";
+                let [enum_field_name, enum_field_number] = trimmedLine.split(" = ").map(part => part.trim());
+
+                const messageFieldName = format(MESSAGE_FIELD_TEMPLATE, enumName, enum_field_name);
+                let newFieldNumber = map.get(messageFieldName) ?? 10000;
+
+                // Reconstruct the field with new field number
+                let updatedField = `${leadingSpaces}${enum_field_name} = ${newFieldNumber};`;
+
+                lines[i] = updatedField;
+            }
+            let modifiedEnumBody = lines.join("\n");
+            modifiedContent = modifiedContent.replace(match[0], `enum ${enumName} {${modifiedEnumBody}}`);
+        }
+
+        return modifiedContent
+    }
+
+    reconstruct_message(protoContent: string): string{
+
+        const messageRegex = /message\s+(\w+)\s*{([^}]*)}/g;
         let match;
         let modifiedContent = protoContent;
 
         while ((match = messageRegex.exec(protoContent)) !== null) {
             const messageName = match[1];
             const messageBody = match[2];
-            let fieldMatch;
-            while ((fieldMatch = fieldRegex.exec(messageBody)) !== null) {
-                const fieldType = fieldMatch[1];
-                const fieldName = fieldMatch[2];
-                const fieldNumber = parseInt(fieldMatch[3], 10);
 
-                const uniqueKey = `${messageName}_${fieldName}`;
-                var newFieldNumber = 10000
-                if (map.has(uniqueKey)) {
-                    newFieldNumber = map.get(uniqueKey) ?? newFieldNumber;
-                    console.log(`Updating ${uniqueKey}: ${fieldNumber} -> ${newFieldNumber}`);
+            let lines = messageBody.split("\n");
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i];
+                let trimmedLine = line.trim();
+
+                if (!trimmedLine.includes("=") || !trimmedLine.endsWith(";")) {
+                    continue;
                 }
-                modifiedContent = modifiedContent.replace(
-                    new RegExp(`(\\s*(?:optional\\s+|repeated\\s+)?${fieldType}\\s+${fieldName}\\s*=\\s*)${fieldNumber}(\\s*;)`, "g"),
-                    `$1${newFieldNumber}$2`
-                );
-            }
-        }
 
-        write_text(writePath, modifiedContent);
-        this.logger.info(`Modified proto file saved as ${writePath}`);
+                const leadingSpaces = line.match(/^\s*/)?.[0] || "";
+
+                let [preField, postField] = trimmedLine.split(" = ").map(part => part.trim());
+                let preFieldParts = preField.split(/\s+/);
+                let fieldType = "";
+                let fieldName = "";
+
+                if (preFieldParts.length === 2) {
+                    [fieldType, fieldName] = preFieldParts;
+                } else if (preFieldParts.length === 3) {
+                    [, fieldType, fieldName] = preFieldParts;
+                } else {
+                    this.logger.warn("invalid format")
+                }
+
+                let postFieldParts = postField.split(/\s+/);
+                let extensions = ";"
+                if(postFieldParts.length > 1){
+                    extensions = postFieldParts[1]
+                }
+
+                const messageFieldName = format(MESSAGE_FIELD_TEMPLATE, messageName, fieldName);
+                let newFieldNumber = map.get(messageFieldName) ?? 10000;
+
+                // Reconstruct the field with new field number
+                let updatedField = `${leadingSpaces}${preField} = ${newFieldNumber}${extensions}`;
+
+                lines[i] = updatedField;
+            }
+
+            let modifiedMessageBody = lines.join("\n");
+            modifiedContent = modifiedContent.replace(match[0], `message ${messageName} {${modifiedMessageBody}}`);
+
+        }
+        return modifiedContent
     }
 }
 
