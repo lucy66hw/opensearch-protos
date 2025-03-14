@@ -46,6 +46,8 @@ node_modules
 build/
 
 #tooling
-spec/protos/.openapi-generator-ignore
+spec/protos/.openapi-generator
 spec/protos/README.md
 cloned-repo
+
+

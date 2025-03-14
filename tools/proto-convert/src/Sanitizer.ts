@@ -1,4 +1,5 @@
 import _ from "lodash";
+import type {OpenAPIV3} from "openapi-types";
 
 /**
  * Sanitizer class:
@@ -6,32 +7,13 @@ import _ from "lodash";
  * and renaming schema definitions.
  */
 export class Sanitizer {
-  public sanitize_spec(spec: any): any {
-    if (spec.paths != null) {
-      this.sanitize_fields(spec.paths, false);
-    }
-    if (spec.components != null) {
-      this.sanitize_components(spec.components);
-    }
+  public sanitize(spec: any): any {
+    this.sanitize_ref(spec);
+    this.sanitize_spec(spec as OpenAPIV3.Document);
     return spec;
   }
 
-  sanitize_components(components: any): void {
-    if (components.schemas != null) {
-      this.sanitize_fields(components.schemas, true);
-    }
-    if (components.schemas != null) {
-      this.sanitize_fields(components.parameters, false);
-    }
-    if (components.schemas != null) {
-      this.sanitize_fields(components.requestBodies, false);
-    }
-    if (components.schemas != null) {
-      this.sanitize_fields(components.responses, false);
-    }
-  }
-
-  sanitize_fields(obj: any, need_rename: boolean): void {
+  sanitize_ref(obj: any): void {
     for (const key in obj) {
       var item = obj[key]
 
@@ -41,21 +23,14 @@ export class Sanitizer {
           item.$ref = renamed_ref
         }
       }
-
-      var renamed_key = this.rename_model_name(key, need_rename)
-      if (renamed_key != key) {
-        obj[renamed_key] = obj[key]
-        delete obj[key]
-      }
-
       if (_.isObject(item) || _.isArray(item)) {
-        this.sanitize_fields(item, need_rename)
+        this.sanitize_ref(item)
       }
     }
   }
 
-  rename_model_name(schema_name: string, need_model_rename: boolean): string {
-    if (schema_name.includes('___') && need_model_rename) {
+  rename_model_name(schema_name: string): string {
+    if (schema_name.includes('___')) {
       return schema_name.split('___').pop() as string;
     }
     return schema_name;
@@ -65,12 +40,125 @@ export class Sanitizer {
     if (typeof ref === 'string' && ref.startsWith('#/components/schemas')) {
       const ref_parts = ref.split('/');
       if (ref_parts.length === 4) {
-        const old_model_name = ref_parts[3];
-        const new_model_name = this.rename_model_name(old_model_name, true);
-        return ref_parts.slice(0, 3).join('/') + '/' + new_model_name;
+        var model_name = ref_parts[3];
+        if (model_name.includes('___') ) {
+          model_name = model_name.split('___').pop() as string;
+        }
+        return ref_parts.slice(0, 3).join('/') + '/' + model_name;
+      }
+    }
+    return ref;
+  }
+
+  public sanitize_spec(OpenApiSpec: OpenAPIV3.Document): void {
+    if (OpenApiSpec.components && OpenApiSpec.components.schemas) {
+      for (const schemaName in OpenApiSpec.components.schemas) {
+        if (OpenApiSpec.components.schemas.hasOwnProperty(schemaName)) {
+          const schema = OpenApiSpec.components.schemas[schemaName];
+          this.sanitize_schema(schema as OpenAPIV3.SchemaObject)
+        }
+        const newModelName = this.rename_model_name(schemaName)
+        OpenApiSpec.components.schemas[newModelName] = OpenApiSpec.components.schemas[schemaName];
+        delete OpenApiSpec.components.schemas[schemaName]
+      }
+    }
+    if (OpenApiSpec.components && OpenApiSpec.components.responses) {
+      for (const schemaName in OpenApiSpec.components.responses) {
+        const schema = OpenApiSpec.components.responses[schemaName];
+        if ("content" in schema && schema.content != undefined) {
+          const content = schema.content;
+          if ("application/json" in content) {
+            const jsonContent = content["application/json"];
+            if ("schema" in jsonContent && jsonContent.schema != undefined) {
+              const schema = jsonContent.schema as OpenAPIV3.SchemaObject;
+              this.sanitize_schema(schema)
+            }
+          }
+        }
+      }
+    }
+    if (OpenApiSpec.components && OpenApiSpec.components.requestBodies) {
+      for (const schemaName in OpenApiSpec.components.requestBodies) {
+        const schema = OpenApiSpec.components.requestBodies[schemaName];
+        if ("content" in schema && schema.content != undefined) {
+          const content = schema.content;
+          if ("application/json" in content) {
+            const jsonContent = content["application/json"];
+            if ("schema" in jsonContent && jsonContent.schema != undefined) {
+              const schema = jsonContent.schema as OpenAPIV3.SchemaObject;
+              this.sanitize_schema(schema)
+            }
+          }
+        }
       }
     }
 
-    return ref;
+    if (OpenApiSpec.components && OpenApiSpec.components.parameters) {
+      for (const schemaName in OpenApiSpec.components.parameters) {
+        if (OpenApiSpec.components.parameters.hasOwnProperty(schemaName)) {
+          const schema = OpenApiSpec.components.parameters[schemaName];
+          if ("name" in schema && schema.name != undefined) {
+            const propName = schema.name
+            if (propName.startsWith("_")) {
+              const newPropName = "underscore" + propName;
+              schema.name = newPropName;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public sanitize_schema(schema: OpenAPIV3.SchemaObject): void {
+    if (schema && "properties" in schema) {
+      const properties = schema.properties as Record<string, OpenAPIV3.SchemaObject>
+      this.rename_properties_name(properties)
+      for (var propName in properties) {
+        if(propName.startsWith("_")) {
+          const newPropName = "underscore" + propName;
+          properties[newPropName] = properties[propName];
+          delete properties[propName];
+        }
+      }
+    }
+    if(schema && "oneOf" in schema && schema.oneOf != undefined) {
+      const oneOfs = schema.oneOf
+      for (const oneOf of oneOfs) {
+        if (oneOf && "properties" in oneOf) {
+          const properties = oneOf.properties as Record<string, OpenAPIV3.SchemaObject>
+          this.rename_properties_name(properties)
+        }
+      }
+    }
+
+    if(schema && "allOf" in schema && schema.allOf != undefined) {
+      const allOfs = schema.allOf
+      for (const allOf of allOfs) {
+        if (allOf && "properties" in allOf) {
+          const properties = allOf.properties as Record<string, OpenAPIV3.SchemaObject>
+          this.rename_properties_name(properties)
+        }
+      }
+    }
+
+    if(schema && "anyOf" in schema && schema.anyOf != undefined) {
+      const anyOfs = schema.anyOf
+      for (const anyOf of anyOfs) {
+        if (anyOf && "properties" in anyOf) {
+          const properties = anyOf.properties as Record<string, OpenAPIV3.SchemaObject>
+          this.rename_properties_name(properties)
+        }
+      }
+    }
+  }
+
+  public rename_properties_name(properties: Record<string, OpenAPIV3.SchemaObject>) {
+    for (var propName in properties) {
+      if(propName.startsWith("_")) {
+        const newPropName = "underscore" + propName;
+        properties[newPropName] = properties[propName];
+        delete properties[propName];
+      }
+    }
   }
 }

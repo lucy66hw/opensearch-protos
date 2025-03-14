@@ -18,7 +18,7 @@ const default_api_to_proto_str = default_api_to_proto.join(',');
 
 const command = new Command()
   .description('Preprocess an OpenAPI spec by filtering for specific paths and then sanitizing it.')
-  .addOption(new Option('-i, --input <path>', 'input YAML file').default((resolve(__dirname, '../../../opensearch-openapi.yaml'))))
+  .addOption(new Option('-i, --input <path>', 'input YAML file').default((resolve(__dirname, '../../../build/opensearch-openapi.yaml'))))
   .addOption(new Option('-o, --output <path>', 'output YAML file').default((resolve(__dirname, '../../../build/processed-opensearch-openapi.yaml'))))
   .addOption(
     new Option('-p, --filtered_path <paths>', 'the paths to keep (comma-separated, e.g., /_search,)')
@@ -46,7 +46,7 @@ try {
   logger.info(`PreProcessing ${opts.filtered_path.join(', ')} into ${opts.output} ...`)
   const original_spec = read_yaml(opts.input);
   const filtered_spec = filter.filter_spec(original_spec, opts.filtered_path);
-  const sanitized_spec = sanitizer.sanitize_spec(filtered_spec);
+  const sanitized_spec = sanitizer.sanitize(filtered_spec);
   write_yaml(opts.output, sanitized_spec);
 
 } catch (err) {
