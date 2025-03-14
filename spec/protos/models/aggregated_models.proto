@@ -201,12 +201,12 @@ message AggregateBase {
 }
 message AggregateOrder {
 
-  oneof aggregate_order {
-    StringMap string_map = 1;
+    oneof aggregate_order {
+        StringMap string_map = 1;
 
-    StringMapArray string_map_array = 2;
+        StringMapArray string_map_array = 2;
 
-  }
+    }
 
 }
 message Aggregation {
@@ -519,42 +519,42 @@ message AggregationRangeTo {
 }
 message Analyzer {
 
-  oneof analyzer {
-    CustomAnalyzer custom_analyzer = 1;
+    oneof analyzer {
+        CustomAnalyzer custom_analyzer = 1;
 
-    FingerprintAnalyzer fingerprint_analyzer = 2;
+        FingerprintAnalyzer fingerprint_analyzer = 2;
 
-    KeywordAnalyzer keyword_analyzer = 3;
+        KeywordAnalyzer keyword_analyzer = 3;
 
-    LanguageAnalyzer language_analyzer = 4;
+        LanguageAnalyzer language_analyzer = 4;
 
-    NoriAnalyzer nori_analyzer = 5;
+        NoriAnalyzer nori_analyzer = 5;
 
-    PatternAnalyzer pattern_analyzer = 6;
+        PatternAnalyzer pattern_analyzer = 6;
 
-    SimpleAnalyzer simple_analyzer = 7;
+        SimpleAnalyzer simple_analyzer = 7;
 
-    StandardAnalyzer standard_analyzer = 8;
+        StandardAnalyzer standard_analyzer = 8;
 
-    StopAnalyzer stop_analyzer = 9;
+        StopAnalyzer stop_analyzer = 9;
 
-    WhitespaceAnalyzer whitespace_analyzer = 10;
+        WhitespaceAnalyzer whitespace_analyzer = 10;
 
-    IcuAnalyzer icu_analyzer = 11;
+        IcuAnalyzer icu_analyzer = 11;
 
-    KuromojiAnalyzer kuromoji_analyzer = 12;
+        KuromojiAnalyzer kuromoji_analyzer = 12;
 
-    SnowballAnalyzer snowball_analyzer = 13;
+        SnowballAnalyzer snowball_analyzer = 13;
 
-    DutchAnalyzer dutch_analyzer = 14;
+        DutchAnalyzer dutch_analyzer = 14;
 
-    SmartcnAnalyzer smartcn_analyzer = 15;
+        SmartcnAnalyzer smartcn_analyzer = 15;
 
-    CjkAnalyzer cjk_analyzer = 16;
+        CjkAnalyzer cjk_analyzer = 16;
 
-    PhoneAnalyzer phone_analyzer = 17;
+        PhoneAnalyzer phone_analyzer = 17;
 
-  }
+    }
 
 }
 message ArrayPercentilesItem {
@@ -666,7 +666,7 @@ message BoolQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  BoolQueryAllOfFilter filter = 3;
 
@@ -688,42 +688,42 @@ message BoolQuery {
 }
 message BoolQueryAllOfFilter {
 
-  oneof bool_query_all_of_filter {
-    QueryContainer query_container = 1;
+    oneof bool_query_all_of_filter {
+        QueryContainer query_container = 1;
 
-    QueryContainerArray query_container_array = 2;
+        QueryContainerArray query_container_array = 2;
 
-  }
+    }
 
 }
 message BoolQueryAllOfMust {
 
-  oneof bool_query_all_of_must {
-    QueryContainer query_container = 1;
+    oneof bool_query_all_of_must {
+        QueryContainer query_container = 1;
 
-    QueryContainerArray query_container_array = 2;
+        QueryContainerArray query_container_array = 2;
 
-  }
+    }
 
 }
 message BoolQueryAllOfMustNot {
 
-  oneof bool_query_all_of_must_not {
-    QueryContainer query_container = 1;
+    oneof bool_query_all_of_must_not {
+        QueryContainer query_container = 1;
 
-    QueryContainerArray query_container_array = 2;
+        QueryContainerArray query_container_array = 2;
 
-  }
+    }
 
 }
 message BoolQueryAllOfShould {
 
-  oneof bool_query_all_of_should {
-    QueryContainer query_container = 1;
+    oneof bool_query_all_of_should {
+        QueryContainer query_container = 1;
 
-    QueryContainerArray query_container_array = 2;
+        QueryContainerArray query_container_array = 2;
 
-  }
+    }
 
 }
 message BoostingQuery {
@@ -732,7 +732,7 @@ message BoostingQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Floating point number between 0 and 1.0 used to decrease the relevance scores of documents matching the `negative` query.
   optional  float negative_boost = 3;
@@ -880,226 +880,226 @@ message BucketSortAggregation {
 }
 message BucketsAdjacencyMatrixBucket {
 
-  oneof buckets_adjacency_matrix_bucket {
-    AdjacencyMatrixBucketMap adjacency_matrix_bucket_map = 1;
+    oneof buckets_adjacency_matrix_bucket {
+        AdjacencyMatrixBucketMap adjacency_matrix_bucket_map = 1;
 
-    AdjacencyMatrixBucketArray adjacency_matrix_bucket_array = 2;
+        AdjacencyMatrixBucketArray adjacency_matrix_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsCompositeBucket {
 
-  oneof buckets_composite_bucket {
-    CompositeBucketMap composite_bucket_map = 1;
+    oneof buckets_composite_bucket {
+        CompositeBucketMap composite_bucket_map = 1;
 
-    CompositeBucketArray composite_bucket_array = 2;
+        CompositeBucketArray composite_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsDateHistogramBucket {
 
-  oneof buckets_date_histogram_bucket {
-    DateHistogramBucketMap date_histogram_bucket_map = 1;
+    oneof buckets_date_histogram_bucket {
+        DateHistogramBucketMap date_histogram_bucket_map = 1;
 
-    DateHistogramBucketArray date_histogram_bucket_array = 2;
+        DateHistogramBucketArray date_histogram_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsDoubleTermsBucket {
 
-  oneof buckets_double_terms_bucket {
-    DoubleTermsBucketMap double_terms_bucket_map = 1;
+    oneof buckets_double_terms_bucket {
+        DoubleTermsBucketMap double_terms_bucket_map = 1;
 
-    DoubleTermsBucketArray double_terms_bucket_array = 2;
+        DoubleTermsBucketArray double_terms_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsFiltersBucket {
 
-  oneof buckets_filters_bucket {
-    FiltersBucketMap filters_bucket_map = 1;
+    oneof buckets_filters_bucket {
+        FiltersBucketMap filters_bucket_map = 1;
 
-    FiltersBucketArray filters_bucket_array = 2;
+        FiltersBucketArray filters_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsGeoHashGridBucket {
 
-  oneof buckets_geo_hash_grid_bucket {
-    GeoHashGridBucketMap geo_hash_grid_bucket_map = 1;
+    oneof buckets_geo_hash_grid_bucket {
+        GeoHashGridBucketMap geo_hash_grid_bucket_map = 1;
 
-    GeoHashGridBucketArray geo_hash_grid_bucket_array = 2;
+        GeoHashGridBucketArray geo_hash_grid_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsGeoTileGridBucket {
 
-  oneof buckets_geo_tile_grid_bucket {
-    GeoTileGridBucketMap geo_tile_grid_bucket_map = 1;
+    oneof buckets_geo_tile_grid_bucket {
+        GeoTileGridBucketMap geo_tile_grid_bucket_map = 1;
 
-    GeoTileGridBucketArray geo_tile_grid_bucket_array = 2;
+        GeoTileGridBucketArray geo_tile_grid_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsHistogramBucket {
 
-  oneof buckets_histogram_bucket {
-    HistogramBucketMap histogram_bucket_map = 1;
+    oneof buckets_histogram_bucket {
+        HistogramBucketMap histogram_bucket_map = 1;
 
-    HistogramBucketArray histogram_bucket_array = 2;
+        HistogramBucketArray histogram_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsIpRangeBucket {
 
-  oneof buckets_ip_range_bucket {
-    IpRangeBucketMap ip_range_bucket_map = 1;
+    oneof buckets_ip_range_bucket {
+        IpRangeBucketMap ip_range_bucket_map = 1;
 
-    IpRangeBucketArray ip_range_bucket_array = 2;
+        IpRangeBucketArray ip_range_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsLongRareTermsBucket {
 
-  oneof buckets_long_rare_terms_bucket {
-    LongRareTermsBucketMap long_rare_terms_bucket_map = 1;
+    oneof buckets_long_rare_terms_bucket {
+        LongRareTermsBucketMap long_rare_terms_bucket_map = 1;
 
-    LongRareTermsBucketArray long_rare_terms_bucket_array = 2;
+        LongRareTermsBucketArray long_rare_terms_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsLongTermsBucket {
 
-  oneof buckets_long_terms_bucket {
-    LongTermsBucketMap long_terms_bucket_map = 1;
+    oneof buckets_long_terms_bucket {
+        LongTermsBucketMap long_terms_bucket_map = 1;
 
-    LongTermsBucketArray long_terms_bucket_array = 2;
+        LongTermsBucketArray long_terms_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsMultiTermsBucket {
 
-  oneof buckets_multi_terms_bucket {
-    MultiTermsBucketMap multi_terms_bucket_map = 1;
+    oneof buckets_multi_terms_bucket {
+        MultiTermsBucketMap multi_terms_bucket_map = 1;
 
-    MultiTermsBucketArray multi_terms_bucket_array = 2;
+        MultiTermsBucketArray multi_terms_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsPath {
 
-  oneof buckets_path {
-    string single = 1;
+    oneof buckets_path {
+        string single = 1;
 
-    StringArray string_array = 2;
+        StringArray string_array = 2;
 
-    StringMap dict = 3;
+        StringMap dict = 3;
 
-  }
+    }
 
 }
 message BucketsQueryContainer {
 
-  oneof buckets_query_container {
-    QueryContainerMap keyed = 1;
+    oneof buckets_query_container {
+        QueryContainerMap keyed = 1;
 
-    QueryContainerArray query_container_array = 2;
+        QueryContainerArray query_container_array = 2;
 
-  }
+    }
 
 }
 message BucketsRangeBucket {
 
-  oneof buckets_range_bucket {
-    RangeBucketMap range_bucket_map = 1;
+    oneof buckets_range_bucket {
+        RangeBucketMap range_bucket_map = 1;
 
-    RangeBucketArray range_bucket_array = 2;
+        RangeBucketArray range_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsSignificantLongTermsBucket {
 
-  oneof buckets_significant_long_terms_bucket {
-    SignificantLongTermsBucketMap significant_long_terms_bucket_map = 1;
+    oneof buckets_significant_long_terms_bucket {
+        SignificantLongTermsBucketMap significant_long_terms_bucket_map = 1;
 
-    SignificantLongTermsBucketArray significant_long_terms_bucket_array = 2;
+        SignificantLongTermsBucketArray significant_long_terms_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsSignificantStringTermsBucket {
 
-  oneof buckets_significant_string_terms_bucket {
-    SignificantStringTermsBucketMap significant_string_terms_bucket_map = 1;
+    oneof buckets_significant_string_terms_bucket {
+        SignificantStringTermsBucketMap significant_string_terms_bucket_map = 1;
 
-    SignificantStringTermsBucketArray significant_string_terms_bucket_array = 2;
+        SignificantStringTermsBucketArray significant_string_terms_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsStringRareTermsBucket {
 
-  oneof buckets_string_rare_terms_bucket {
-    StringRareTermsBucketMap string_rare_terms_bucket_map = 1;
+    oneof buckets_string_rare_terms_bucket {
+        StringRareTermsBucketMap string_rare_terms_bucket_map = 1;
 
-    StringRareTermsBucketArray string_rare_terms_bucket_array = 2;
+        StringRareTermsBucketArray string_rare_terms_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsStringTermsBucket {
 
-  oneof buckets_string_terms_bucket {
-    StringTermsBucketMap string_terms_bucket_map = 1;
+    oneof buckets_string_terms_bucket {
+        StringTermsBucketMap string_terms_bucket_map = 1;
 
-    StringTermsBucketArray string_terms_bucket_array = 2;
+        StringTermsBucketArray string_terms_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsVariableWidthHistogramBucket {
 
-  oneof buckets_variable_width_histogram_bucket {
-    VariableWidthHistogramBucketMap variable_width_histogram_bucket_map = 1;
+    oneof buckets_variable_width_histogram_bucket {
+        VariableWidthHistogramBucketMap variable_width_histogram_bucket_map = 1;
 
-    VariableWidthHistogramBucketArray variable_width_histogram_bucket_array = 2;
+        VariableWidthHistogramBucketArray variable_width_histogram_bucket_array = 2;
 
-  }
+    }
 
 }
 message BucketsVoid {
 
-  oneof buckets_void {
-    NullMap null_map = 1;
+    oneof buckets_void {
+        NullMap null_map = 1;
 
-    NullArray null_array = 2;
+        NullArray null_array = 2;
 
-  }
+    }
 
 }
 message BuiltinHighlighterType {
 
-  oneof builtin_highlighter_type {
-    BuiltinHighlighterTypeOneOf builtin_highlighter_type_one_of = 1;
+    oneof builtin_highlighter_type {
+        BuiltinHighlighterTypeOneOf builtin_highlighter_type_one_of = 1;
 
-    FastVector fast_vector = 2;
+        FastVector fast_vector = 2;
 
-    BuiltinHighlighterTypeOneOf1 builtin_highlighter_type_one_of1 = 3;
+        BuiltinHighlighterTypeOneOf1 builtin_highlighter_type_one_of1 = 3;
 
-  }
+    }
 
 }
 enum BuiltinHighlighterTypeOneOf {
@@ -1129,24 +1129,24 @@ message BulkRequestInner {
 }
 message CalendarInterval {
 
-  oneof calendar_interval {
-    Second second = 1;
+    oneof calendar_interval {
+        Second second = 1;
 
-    Minute minute = 2;
+        Minute minute = 2;
 
-    Hour hour = 3;
+        Hour hour = 3;
 
-    Day day = 4;
+        Day day = 4;
 
-    Week week = 5;
+        Week week = 5;
 
-    Month month = 6;
+        Month month = 6;
 
-    Quarter quarter = 7;
+        Quarter quarter = 7;
 
-    Year year = 8;
+        Year year = 8;
 
-  }
+    }
 
 }
 message CardinalityAggregate {
@@ -1269,9 +1269,9 @@ message ClusterDetails {
 
   optional  bool timed_out = 4;
 
-  optional  ShardStatistics shards = 5 [json_name="_shards"];
+  repeated  ShardFailure failures = 5;
 
-  repeated  ShardFailure failures = 6;
+  optional  ShardStatistics underscore_shards = 6;
 
 }
 enum ClusterSearchStatus {
@@ -1324,7 +1324,7 @@ message CombinedFieldsQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // List of fields to search. Field wildcard patterns are allowed. Only `text` fields are supported, and they must all have the same search `analyzer`.
   repeated  string fields = 3;
@@ -1349,12 +1349,12 @@ enum CombinedFieldsZeroTerms {
 }
 message CommonTermsQuery {
 
-  oneof common_terms_query {
-    string query = 1;
+    oneof common_terms_query {
+        string query = 1;
 
-    CommonTermsQueryOneOf common_terms_query_one_of = 2;
+        CommonTermsQueryOneOf common_terms_query_one_of = 2;
 
-  }
+    }
 
 }
 message CommonTermsQueryOneOf {
@@ -1363,7 +1363,7 @@ message CommonTermsQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  string analyzer = 3;
 
@@ -1380,12 +1380,12 @@ message CommonTermsQueryOneOf {
 }
 message CompletionContext {
 
-  oneof completion_context {
-    Context context = 1;
+    oneof completion_context {
+        Context context = 1;
 
-    CompletionContextOneOf completion_context_one_of = 2;
+        CompletionContextOneOf completion_context_one_of = 2;
 
-  }
+    }
 
 }
 message CompletionContextArray {
@@ -1422,12 +1422,12 @@ message CompletionSuggest {
 }
 message CompletionSuggestAllOfOptions {
 
-  oneof completion_suggest_all_of_options {
-    CompletionSuggestOption completion_suggest_option = 1;
+    oneof completion_suggest_all_of_options {
+        CompletionSuggestOption completion_suggest_option = 1;
 
-    CompletionSuggestOptionArray completion_suggest_option_array = 2;
+        CompletionSuggestOptionArray completion_suggest_option_array = 2;
 
-  }
+    }
 
 }
 message CompletionSuggestOption {
@@ -1439,19 +1439,19 @@ message CompletionSuggestOption {
 
   map<string, google.protobuf.Struct> fields = 3;
 
-  optional  string id = 4 [json_name="_id"];
+  optional  string text = 4;
 
-  optional  string index = 5 [json_name="_index"];
+  optional  float score = 5;
 
-  optional  string routing = 6 [json_name="_routing"];
+  optional  string underscore_id = 6;
 
-  optional  float score = 7 [json_name="_score"];
+  optional  string underscore_index = 7;
 
-  optional  google.protobuf.Struct source = 8 [json_name="_source"];
+  optional  string underscore_routing = 8;
 
-  optional  string text = 9;
+  optional  float underscore_score = 9;
 
-  optional  float score1 = 10;
+  optional  google.protobuf.Struct underscore_source = 10;
 
 }
 message CompletionSuggestOptionArray {
@@ -1652,19 +1652,19 @@ message ConstantScoreQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  QueryContainer filter = 3;
 
 }
 message Context {
 
-  oneof context {
-    string category = 1;
+    oneof context {
+        string category = 1;
 
-    GeoLocation location = 2;
+        GeoLocation location = 2;
 
-  }
+    }
 
 }
 message ContextArray {
@@ -1896,7 +1896,7 @@ message DateRangeQueryParameters {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  RangeRelation relation = 3;
 
@@ -1919,13 +1919,13 @@ message DateRangeQueryParameters {
 }
 message DateTime {
 
-  oneof date_time {
-    string string = 1;
+    oneof date_time {
+        string string = 1;
 
-    // The time unit for milliseconds.
-    int64 int64 = 2;
+        // The time unit for milliseconds.
+        int64 int64 = 2;
 
-  }
+    }
 
 }
 enum Day {
@@ -2020,7 +2020,7 @@ message DisMaxQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // One or more query clauses. Returned documents must match one or more of these queries. If a document matches multiple queries, OpenSearch uses the highest relevance score.
   repeated  QueryContainer queries = 3;
@@ -2039,7 +2039,7 @@ message DistanceFeatureQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  string origin = 3;
 
@@ -2052,26 +2052,26 @@ message DistanceFeatureQuery {
 }
 message DistanceUnit {
 
-  oneof distance_unit {
-    Centimeters centimeters = 1;
+    oneof distance_unit {
+        Centimeters centimeters = 1;
 
-    Feet feet = 2;
+        Feet feet = 2;
 
-    Inches inches = 3;
+        Inches inches = 3;
 
-    Kilometers kilometers = 4;
+        Kilometers kilometers = 4;
 
-    Meters meters = 5;
+        Meters meters = 5;
 
-    Miles miles = 6;
+        Miles miles = 6;
 
-    Millimeters millimeters = 7;
+        Millimeters millimeters = 7;
 
-    NauticalMiles nautical_miles = 8;
+        NauticalMiles nautical_miles = 8;
 
-    Yards yards = 9;
+        Yards yards = 9;
 
-  }
+    }
 
 }
 message DiversifiedSamplerAggregation {
@@ -2248,7 +2248,7 @@ message ExistsQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
   optional  string field = 3;
@@ -2256,18 +2256,18 @@ message ExistsQuery {
 }
 message ExpandWildcard {
 
-  oneof expand_wildcard {
-    ExpandWildcardOneOf expand_wildcard_one_of = 1;
+    oneof expand_wildcard {
+        ExpandWildcardOneOf expand_wildcard_one_of = 1;
 
-    ExpandWildcardOneOf1 expand_wildcard_one_of1 = 2;
+        ExpandWildcardOneOf1 expand_wildcard_one_of1 = 2;
 
-    ExpandWildcardOneOf2 expand_wildcard_one_of2 = 3;
+        ExpandWildcardOneOf2 expand_wildcard_one_of2 = 3;
 
-    ExpandWildcardOneOf3 expand_wildcard_one_of3 = 4;
+        ExpandWildcardOneOf3 expand_wildcard_one_of3 = 4;
 
-    ExpandWildcardOneOf4 expand_wildcard_one_of4 = 5;
+        ExpandWildcardOneOf4 expand_wildcard_one_of4 = 5;
 
-  }
+    }
 
 }
 message ExpandWildcardArray {
@@ -2298,12 +2298,12 @@ enum ExpandWildcardOneOf4 {
 }
 message ExpandWildcards {
 
-  oneof expand_wildcards {
-    ExpandWildcard expand_wildcard = 1;
+    oneof expand_wildcards {
+        ExpandWildcard expand_wildcard = 1;
 
-    ExpandWildcardArray expand_wildcard_array = 2;
+        ExpandWildcardArray expand_wildcard_array = 2;
 
-  }
+    }
 
 }
 message ExplainRequest {
@@ -2346,16 +2346,16 @@ message ExplanationDetailValue {
 }
 message ExplanationValue {
 
-  oneof explanation_value {
-    int32 int32 = 1;
+    oneof explanation_value {
+        int32 int32 = 1;
 
-    int64 int64 = 2;
+        int64 int64 = 2;
 
-    float float = 3;
+        float float = 3;
 
-    double double = 4;
+        double double = 4;
 
-  }
+    }
 
 }
 message ExtendedBoundsFieldDateMath {
@@ -2629,13 +2629,13 @@ message Field {
 }
 message FieldAndFormat {
 
-  oneof field_and_format {
-    // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
-    string field = 1;
+    oneof field_and_format {
+        // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
+        string field = 1;
 
-    FieldAndFormatOneOf field_and_format_one_of = 2;
+        FieldAndFormatOneOf field_and_format_one_of = 2;
 
-  }
+    }
 
 }
 message FieldAndFormatOneOf {
@@ -2664,22 +2664,22 @@ message FieldCollapse {
 }
 message FieldCollapseInnerHits {
 
-  oneof field_collapse_inner_hits {
-    InnerHits inner_hits = 1;
+    oneof field_collapse_inner_hits {
+        InnerHits inner_hits = 1;
 
-    InnerHitsArray inner_hits_array = 2;
+        InnerHitsArray inner_hits_array = 2;
 
-  }
+    }
 
 }
 message FieldDateMath {
 
-  oneof field_date_math {
-    string expr = 1;
+    oneof field_date_math {
+        string expr = 1;
 
-    double value = 2;
+        double value = 2;
 
-  }
+    }
 
 }
 message FieldLookup {
@@ -2697,12 +2697,12 @@ message FieldLookup {
 }
 message FieldSort {
 
-  oneof field_sort {
-    SortOrder order = 1;
+    oneof field_sort {
+        SortOrder order = 1;
 
-    FieldSortOneOf field_sort_one_of = 2;
+        FieldSortOneOf field_sort_one_of = 2;
 
-  }
+    }
 
 }
 message FieldSortMap {
@@ -2847,13 +2847,13 @@ message FieldValueFactorScoreFunction {
 }
 message Fields {
 
-  oneof fields {
-    // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
-    string string = 1;
+    oneof fields {
+        // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
+        string string = 1;
 
-    StringArray string_array = 2;
+        StringArray string_array = 2;
 
-  }
+    }
 
 }
 message FilterAggregate {
@@ -3008,7 +3008,7 @@ message FunctionScoreQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  FunctionBoostMode boost_mode = 3;
 
@@ -3028,22 +3028,22 @@ message FunctionScoreQuery {
 }
 message Fuzziness {
 
-  oneof fuzziness {
-    string string = 1;
+    oneof fuzziness {
+        string string = 1;
 
-    int32 int32 = 2;
+        int32 int32 = 2;
 
-  }
+    }
 
 }
 message FuzzyQuery {
 
-  oneof fuzzy_query {
-    FieldValue value = 1;
+    oneof fuzzy_query {
+        FieldValue value = 1;
 
-    FuzzyQueryOneOf fuzzy_query_one_of = 2;
+        FuzzyQueryOneOf fuzzy_query_one_of = 2;
 
-  }
+    }
 
 }
 message FuzzyQueryOneOf {
@@ -3052,7 +3052,7 @@ message FuzzyQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Maximum number of variations created.
   optional  int32 max_expansions = 3;
@@ -3083,7 +3083,7 @@ message GeoBoundingBoxQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  GeoExecution type = 3;
 
@@ -3095,16 +3095,16 @@ message GeoBoundingBoxQuery {
 }
 message GeoBounds {
 
-  oneof geo_bounds {
-    CoordsGeoBounds coords = 1;
+    oneof geo_bounds {
+        CoordsGeoBounds coords = 1;
 
-    TopLeftBottomRightGeoBounds tlbr = 2;
+        TopLeftBottomRightGeoBounds tlbr = 2;
 
-    TopRightBottomLeftGeoBounds trbl = 3;
+        TopRightBottomLeftGeoBounds trbl = 3;
 
-    WktGeoBounds wkt = 4;
+        WktGeoBounds wkt = 4;
 
-  }
+    }
 
 }
 message GeoBoundsAggregate {
@@ -3200,7 +3200,7 @@ message GeoDistanceQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  string distance = 3;
 
@@ -3297,12 +3297,12 @@ message GeoHashLocation {
 }
 message GeoHashPrecision {
 
-  oneof geo_hash_precision {
-    int32 geohash_length = 1;
+    oneof geo_hash_precision {
+        int32 geohash_length = 1;
 
-    string distance = 2;
+        string distance = 2;
 
-  }
+    }
 
 }
 message GeoLine {
@@ -3359,16 +3359,16 @@ message GeoLineSort {
 }
 message GeoLocation {
 
-  oneof geo_location {
-    LatLonGeoLocation latlon = 1;
+    oneof geo_location {
+        LatLonGeoLocation latlon = 1;
 
-    GeoHashLocation geohash = 2;
+        GeoHashLocation geohash = 2;
 
-    DoubleArray double_array = 3;
+        DoubleArray double_array = 3;
 
-    string text = 4;
+        string text = 4;
 
-  }
+    }
 
 }
 message GeoLocationArray {
@@ -3389,7 +3389,7 @@ message GeoPolygonQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  GeoValidationMethod validation_method = 3;
 
@@ -3411,7 +3411,7 @@ message GeoShapeQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Set to `true` to ignore an unmapped field and not match any documents for this query. Set to `false` to throw an exception if the field is not mapped.
   optional  bool ignore_unmapped = 3;
@@ -3501,25 +3501,25 @@ enum GeoValidationMethod {
 message GetResult {
 
 
-  optional  string type = 1 [json_name="_type"];
+  map<string, google.protobuf.Struct> fields = 1;
 
-  optional  string index = 2 [json_name="_index"];
+  optional  bool found = 2;
 
-  map<string, google.protobuf.Struct> fields = 3;
+  optional  string underscore_type = 3;
 
-  optional  bool found = 4;
+  optional  string underscore_index = 4;
 
-  optional  string id = 5 [json_name="_id"];
+  optional  string underscore_id = 5;
 
-  optional  float primary_term = 6 [json_name="_primary_term"];
+  optional  float underscore_primary_term = 6;
 
-  optional  string routing = 7 [json_name="_routing"];
+  optional  string underscore_routing = 7;
 
-  optional  int64 seq_no = 8 [json_name="_seq_no"];
+  optional  int64 underscore_seq_no = 8;
 
-  optional  google.protobuf.Struct source = 9 [json_name="_source"];
+  optional  google.protobuf.Struct underscore_source = 9;
 
-  optional  int64 version = 10 [json_name="_version"];
+  optional  int64 underscore_version = 10;
 
 }
 message GlobalAggregate {
@@ -3551,7 +3551,7 @@ message HasChildQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Set to `true` to ignore an unmapped field and not match any documents for this query. Set to `false` to throw an exception if the field is not mapped.
   optional  bool ignore_unmapped = 3;
@@ -3577,7 +3577,7 @@ message HasParentQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Set to `true` to ignore an unmapped field and not match any documents for this query. Set to `false` to throw an exception if the field is not mapped.
   optional  bool ignore_unmapped = 3;
@@ -3820,12 +3820,12 @@ enum HighlighterTagsSchema {
 }
 message HighlighterType {
 
-  oneof highlighter_type {
-    BuiltinHighlighterType builtin = 1;
+    oneof highlighter_type {
+        BuiltinHighlighterType builtin = 1;
 
-    string custom = 2;
+        string custom = 2;
 
-  }
+    }
 
 }
 message HistogramAggregate {
@@ -3897,56 +3897,56 @@ message HistogramBucketMap {
 message HistogramOrder {
 
 
-  optional  SortOrder count = 1 [json_name="_count"];
+  optional  SortOrder underscore_count = 1;
 
-  optional  SortOrder key = 2 [json_name="_key"];
+  optional  SortOrder underscore_key = 2;
 
 }
 message Hit {
 
 
-  optional  string type = 1 [json_name="_type"];
+  google.protobuf.Struct fields = 1;
 
-  optional  string index = 2 [json_name="_index"];
+  map<string, StringArray> highlight = 2;
 
-  optional  string id = 3 [json_name="_id"];
+  map<string, InnerHitsResult> inner_hits = 3;
 
-  optional  HitScore score = 4 [json_name="_score"];
+  repeated  string matched_queries = 4;
 
-  optional  Explanation explanation = 5 [json_name="_explanation"];
+  map<string, StringArray> ignored_field_values = 5;
 
-  google.protobuf.Struct fields = 6;
+  repeated  FieldValue sort = 6;
 
-  map<string, StringArray> highlight = 7;
+  optional  string underscore_type = 7;
 
-  map<string, InnerHitsResult> inner_hits = 8;
+  optional  string underscore_index = 8;
 
-  repeated  string matched_queries = 9;
+  optional  string underscore_id = 9;
 
-  optional  NestedIdentity nested = 10 [json_name="_nested"];
+  optional  HitUnderscoreScore underscore_score = 10;
 
-  repeated  string ignored = 11 [json_name="_ignored"];
+  optional  Explanation underscore_explanation = 11;
 
-  map<string, StringArray> ignored_field_values = 12;
+  optional  NestedIdentity underscore_nested = 12;
 
-  optional  string shard = 13 [json_name="_shard"];
+  repeated  string underscore_ignored = 13;
 
-  optional  string node = 14 [json_name="_node"];
+  optional  string underscore_shard = 14;
 
-  optional  string routing = 15 [json_name="_routing"];
+  optional  string underscore_node = 15;
 
-  optional  google.protobuf.Struct source = 16 [json_name="_source"];
+  optional  string underscore_routing = 16;
 
-  optional  int64 seq_no = 17 [json_name="_seq_no"];
+  optional  google.protobuf.Struct underscore_source = 17;
 
-  optional  int64 primary_term = 18 [json_name="_primary_term"];
+  optional  int64 underscore_seq_no = 18;
 
-  optional  int64 version = 19 [json_name="_version"];
+  optional  int64 underscore_primary_term = 19;
 
-  repeated  FieldValue sort = 20;
+  optional  int64 underscore_version = 20;
 
 }
-message HitScore {
+message HitUnderscoreScore {
 
 
   optional  float float = 1;
@@ -3974,12 +3974,12 @@ message HitsMetadataMaxScore {
 }
 message HitsMetadataTotal {
 
-  oneof hits_metadata_total {
-    TotalHits total_hits = 1;
+    oneof hits_metadata_total {
+        TotalHits total_hits = 1;
 
-    int64 int64 = 2;
+        int64 int64 = 2;
 
-  }
+    }
 
 }
 message HoltLinearModelSettings {
@@ -4066,12 +4066,12 @@ enum HoltWintersMovingAverageAggregationAllOfModel {
 }
 message HoltWintersType {
 
-  oneof holt_winters_type {
-    Additive additive = 1;
+    oneof holt_winters_type {
+        Additive additive = 1;
 
-    Multiplicative multiplicative = 2;
+        Multiplicative multiplicative = 2;
 
-  }
+    }
 
 }
 enum Hour {
@@ -4085,7 +4085,7 @@ message HybridQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   repeated  QueryContainer queries = 3;
 
@@ -4121,12 +4121,12 @@ message Id {
 }
 message Ids {
 
-  oneof ids {
-    string string = 1;
+    oneof ids {
+        string string = 1;
 
-    StringArray string_array = 2;
+        StringArray string_array = 2;
 
-  }
+    }
 
 }
 message IdsQuery {
@@ -4135,7 +4135,7 @@ message IdsQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  Ids values = 3;
 
@@ -4158,12 +4158,12 @@ message IndexOperation {
 }
 message Indices {
 
-  oneof indices {
-    string string = 1;
+    oneof indices {
+        string string = 1;
 
-    StringArray string_array = 2;
+        StringArray string_array = 2;
 
-  }
+    }
 
 }
 message InferenceAggregate {
@@ -4242,13 +4242,13 @@ message InlineGet {
 
   optional  bool found = 2;
 
-  optional  int64 seq_no = 3 [json_name="_seq_no"];
+  optional  int64 underscore_seq_no = 3;
 
-  optional  float primary_term = 4 [json_name="_primary_term"];
+  optional  float underscore_primary_term = 4;
 
-  optional  string routing = 5 [json_name="_routing"];
+  optional  string underscore_routing = 5;
 
-  optional  google.protobuf.Struct source = 6 [json_name="_source"];
+  optional  google.protobuf.Struct underscore_source = 6;
 
 }
 message InlineGetDictUserDefined {
@@ -4258,13 +4258,13 @@ message InlineGetDictUserDefined {
 
   optional  bool found = 2;
 
-  optional  int64 seq_no = 3 [json_name="_seq_no"];
+  optional  int64 underscore_seq_no = 3;
 
-  optional  int32 primary_term = 4 [json_name="_primary_term"];
+  optional  int32 underscore_primary_term = 4;
 
-  optional  string routing = 5 [json_name="_routing"];
+  optional  string underscore_routing = 5;
 
-  google.protobuf.Struct source = 6 [json_name="_source"];
+  google.protobuf.Struct underscore_source = 6;
 
 }
 message InlineObject {
@@ -4282,27 +4282,27 @@ message InlineObject {
 message InlineObject1 {
 
 
-  optional  string type = 1 [json_name="_type"];
+  optional  bool matched = 1;
 
-  optional  string index = 2 [json_name="_index"];
+  optional  ExplanationDetail explanation = 2;
 
-  optional  string id = 3 [json_name="_id"];
+  optional  InlineGet get = 3;
 
-  optional  bool matched = 4;
+  optional  string underscore_type = 4;
 
-  optional  ExplanationDetail explanation = 5;
+  optional  string underscore_index = 5;
 
-  optional  InlineGet get = 6;
+  optional  string underscore_id = 6;
 
 }
 message InlineScript {
 
-  oneof inline_script {
-    string source = 1;
+    oneof inline_script {
+        string source = 1;
 
-    InlineScriptOneOf inline_script_one_of = 2;
+        InlineScriptOneOf inline_script_one_of = 2;
 
-  }
+    }
 
 }
 message InlineScriptOneOf {
@@ -4348,13 +4348,13 @@ message InnerHits {
 
   optional  Sort sort = 12;
 
-  optional  SourceConfig source = 13 [json_name="_source"];
+  optional  Fields stored_fields = 13;
 
-  optional  Fields stored_fields = 14;
+  optional  bool track_scores = 14;
 
-  optional  bool track_scores = 15;
+  optional  bool version = 15;
 
-  optional  bool version = 16;
+  optional  SourceConfig underscore_source = 16;
 
 }
 message InnerHitsArray {
@@ -4492,7 +4492,7 @@ message IntervalsQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  IntervalsAllOf all_of = 3;
 
@@ -4615,7 +4615,7 @@ message KnnQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   repeated  float vector = 3;
 
@@ -4640,12 +4640,12 @@ message KnnQuery {
 }
 message KnnQueryRescore {
 
-  oneof knn_query_rescore {
-    bool enable = 1;
+    oneof knn_query_rescore {
+        bool enable = 1;
 
-    RescoreContext context = 2;
+        RescoreContext context = 2;
 
-  }
+    }
 
 }
 message KuromojiAnalyzer {
@@ -4744,12 +4744,12 @@ message LatLonGeoLocation {
 }
 message Like {
 
-  oneof like {
-    string text = 1;
+    oneof like {
+        string text = 1;
 
-    LikeDocument document = 2;
+        LikeDocument document = 2;
 
-  }
+    }
 
 }
 message LikeArray {
@@ -4765,19 +4765,19 @@ message LikeDocument {
 
   repeated  string fields = 2;
 
-  optional  string id = 3 [json_name="_id"];
+  map<string, string> per_field_analyzer = 3;
 
-  optional  string index = 4 [json_name="_index"];
+  optional  string routing = 4;
 
-  optional  string type = 5 [json_name="_type"];
+  optional  int64 version = 5;
 
-  map<string, string> per_field_analyzer = 6;
+  optional  VersionType version_type = 6;
 
-  optional  string routing = 7;
+  optional  string underscore_id = 7;
 
-  optional  int64 version = 8;
+  optional  string underscore_index = 8;
 
-  optional  VersionType version_type = 9;
+  optional  string underscore_type = 9;
 
 }
 message LinearInterpolationSmoothingModel {
@@ -4891,17 +4891,17 @@ message MatchAllQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
 }
 message MatchBoolPrefixQuery {
 
-  oneof match_bool_prefix_query {
-    string query = 1;
+    oneof match_bool_prefix_query {
+        string query = 1;
 
-    MatchBoolPrefixQueryOneOf match_bool_prefix_query_one_of = 2;
+        MatchBoolPrefixQueryOneOf match_bool_prefix_query_one_of = 2;
 
-  }
+    }
 
 }
 message MatchBoolPrefixQueryOneOf {
@@ -4910,7 +4910,7 @@ message MatchBoolPrefixQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Analyzer used to convert the text in the query value into tokens.
   optional  string analyzer = 3;
@@ -4942,17 +4942,17 @@ message MatchNoneQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
 }
 message MatchPhrasePrefixQuery {
 
-  oneof match_phrase_prefix_query {
-    string query = 1;
+    oneof match_phrase_prefix_query {
+        string query = 1;
 
-    MatchPhrasePrefixQueryOneOf match_phrase_prefix_query_one_of = 2;
+        MatchPhrasePrefixQueryOneOf match_phrase_prefix_query_one_of = 2;
 
-  }
+    }
 
 }
 message MatchPhrasePrefixQueryOneOf {
@@ -4961,7 +4961,7 @@ message MatchPhrasePrefixQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Analyzer used to convert text in the query value into tokens.
   optional  string analyzer = 3;
@@ -4980,12 +4980,12 @@ message MatchPhrasePrefixQueryOneOf {
 }
 message MatchPhraseQuery {
 
-  oneof match_phrase_query {
-    string query = 1;
+    oneof match_phrase_query {
+        string query = 1;
 
-    MatchPhraseQueryOneOf match_phrase_query_one_of = 2;
+        MatchPhraseQueryOneOf match_phrase_query_one_of = 2;
 
-  }
+    }
 
 }
 message MatchPhraseQueryOneOf {
@@ -4994,7 +4994,7 @@ message MatchPhraseQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Analyzer used to convert the text in the query value into tokens.
   optional  string analyzer = 3;
@@ -5010,12 +5010,12 @@ message MatchPhraseQueryOneOf {
 }
 message MatchQuery {
 
-  oneof match_query {
-    FieldValue query = 1;
+    oneof match_query {
+        FieldValue query = 1;
 
-    MatchQueryOneOf match_query_one_of = 2;
+        MatchQueryOneOf match_query_one_of = 2;
 
-  }
+    }
 
 }
 message MatchQueryOneOf {
@@ -5024,7 +5024,7 @@ message MatchQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Analyzer used to convert the text in the query value into tokens.
   optional  string analyzer = 3;
@@ -5255,12 +5255,12 @@ enum MinimumInterval {
 }
 message MinimumShouldMatch {
 
-  oneof minimum_should_match {
-    int32 int32 = 1;
+    oneof minimum_should_match {
+        int32 int32 = 1;
 
-    string string = 2;
+        string string = 2;
 
-  }
+    }
 
 }
 enum Minute {
@@ -5306,7 +5306,7 @@ message MoreLikeThisQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // The analyzer that is used to analyze the free form text. Defaults to the analyzer associated with the first field in fields.
   optional  string analyzer = 3;
@@ -5362,38 +5362,38 @@ message MoreLikeThisQuery {
 }
 message MoreLikeThisQueryAllOfLike {
 
-  oneof more_like_this_query_all_of_like {
-    Like like = 1;
+    oneof more_like_this_query_all_of_like {
+        Like like = 1;
 
-    LikeArray like_array = 2;
+        LikeArray like_array = 2;
 
-  }
+    }
 
 }
 message MoreLikeThisQueryAllOfUnlike {
 
-  oneof more_like_this_query_all_of_unlike {
-    Like like = 1;
+    oneof more_like_this_query_all_of_unlike {
+        Like like = 1;
 
-    LikeArray like_array = 2;
+        LikeArray like_array = 2;
 
-  }
+    }
 
 }
 message MovingAverageAggregation {
 
-  oneof moving_average_aggregation {
-    LinearMovingAverageAggregation linear_moving_average_aggregation = 1;
+    oneof moving_average_aggregation {
+        LinearMovingAverageAggregation linear_moving_average_aggregation = 1;
 
-    SimpleMovingAverageAggregation simple_moving_average_aggregation = 2;
+        SimpleMovingAverageAggregation simple_moving_average_aggregation = 2;
 
-    EwmaMovingAverageAggregation ewma_moving_average_aggregation = 3;
+        EwmaMovingAverageAggregation ewma_moving_average_aggregation = 3;
 
-    HoltMovingAverageAggregation holt_moving_average_aggregation = 4;
+        HoltMovingAverageAggregation holt_moving_average_aggregation = 4;
 
-    HoltWintersMovingAverageAggregation holt_winters_moving_average_aggregation = 5;
+        HoltWintersMovingAverageAggregation holt_winters_moving_average_aggregation = 5;
 
-  }
+    }
 
 }
 message MovingAverageAggregationBase {
@@ -5628,7 +5628,7 @@ message MultiMatchQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Analyzer used to convert the text in the query value into tokens.
   optional  string analyzer = 3;
@@ -5685,12 +5685,12 @@ message MultiTermLookup {
 }
 message MultiTermQueryRewrite {
 
-  oneof multi_term_query_rewrite {
-    MultiTermQueryRewriteOneOf multi_term_query_rewrite_one_of = 1;
+    oneof multi_term_query_rewrite {
+        MultiTermQueryRewriteOneOf multi_term_query_rewrite_one_of = 1;
 
-    string string = 2;
+        string string = 2;
 
-  }
+    }
 
 }
 enum MultiTermQueryRewriteOneOf {
@@ -5821,7 +5821,7 @@ message NestedIdentity {
 
   optional  int32 offset = 2;
 
-  optional  NestedIdentity nested = 3 [json_name="_nested"];
+  optional  NestedIdentity underscore_nested = 3;
 
 }
 message NestedQuery {
@@ -5830,7 +5830,7 @@ message NestedQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Set to `true` to ignore an unmapped field and not match any documents for this query. Set to `false` to throw an exception if the field is not mapped.
   optional  bool ignore_unmapped = 3;
@@ -5864,7 +5864,7 @@ message NeuralQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  string query_text = 3;
 
@@ -5949,7 +5949,7 @@ message NumberRangeQueryParameters {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  RangeRelation relation = 3;
 
@@ -5972,22 +5972,22 @@ message NumberRangeQueryParameters {
 }
 message NumberRangeQueryParametersAllOfFrom {
 
-  oneof number_range_query_parameters_all_of_from {
-    double double = 1;
+    oneof number_range_query_parameters_all_of_from {
+        double double = 1;
 
-    string string = 2;
+        string string = 2;
 
-  }
+    }
 
 }
 message NumberRangeQueryParametersAllOfTo {
 
-  oneof number_range_query_parameters_all_of_to {
-    double double = 1;
+    oneof number_range_query_parameters_all_of_to {
+        double double = 1;
 
-    string string = 2;
+        string string = 2;
 
-  }
+    }
 
 }
 message NumericDecayPlacement {
@@ -6005,19 +6005,19 @@ message NumericDecayPlacement {
 message OperationBase {
 
 
-  optional  string id = 1 [json_name="_id"];
+  optional  string routing = 1;
 
-  optional  string index = 2 [json_name="_index"];
+  optional  int64 if_primary_term = 2;
 
-  optional  string routing = 3;
+  optional  int64 if_seq_no = 3;
 
-  optional  int64 if_primary_term = 4;
+  optional  int64 version = 4;
 
-  optional  int64 if_seq_no = 5;
+  optional  VersionType version_type = 5;
 
-  optional  int64 version = 6;
+  optional  string underscore_id = 6;
 
-  optional  VersionType version_type = 7;
+  optional  string underscore_index = 7;
 
 }
 message OperationContainer {
@@ -6063,7 +6063,7 @@ message ParentIdQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  string id = 3;
 
@@ -6119,12 +6119,12 @@ message PercentileRanksAggregation {
 }
 message Percentiles {
 
-  oneof percentiles {
-    KeyedPercentilesValueMap keyed_percentiles_value_map = 1;
+    oneof percentiles {
+        KeyedPercentilesValueMap keyed_percentiles_value_map = 1;
 
-    ArrayPercentilesItemArray array_percentiles_item_array = 2;
+        ArrayPercentilesItemArray array_percentiles_item_array = 2;
 
-  }
+    }
 
 }
 message PercentilesAggregateBase {
@@ -6190,7 +6190,7 @@ message PercolateQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  google.protobuf.Struct document = 3;
 
@@ -6205,7 +6205,7 @@ message PercolateQuery {
   optional  string index = 7;
 
   // The suffix used for the `_percolator_document_slot` field when multiple `percolate` queries are specified.
-  optional  string name1 = 8;
+  optional  string name = 8;
 
   // Preference used to fetch document to percolate.
   optional  string preference = 9;
@@ -6259,12 +6259,12 @@ message PhraseSuggest {
 }
 message PhraseSuggestAllOfOptions {
 
-  oneof phrase_suggest_all_of_options {
-    PhraseSuggestOption phrase_suggest_option = 1;
+    oneof phrase_suggest_all_of_options {
+        PhraseSuggestOption phrase_suggest_option = 1;
 
-    PhraseSuggestOptionArray phrase_suggest_option_array = 2;
+        PhraseSuggestOptionArray phrase_suggest_option_array = 2;
 
-  }
+    }
 
 }
 message PhraseSuggestCollate {
@@ -6350,9 +6350,9 @@ message PhraseSuggester {
 message PinnedDoc {
 
 
-  optional  string id = 1 [json_name="_id"];
+  optional  string underscore_id = 1;
 
-  optional  string index = 2 [json_name="_index"];
+  optional  string underscore_index = 2;
 
 }
 message PinnedQuery {
@@ -6361,7 +6361,7 @@ message PinnedQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  QueryContainer organic = 3;
 
@@ -6398,12 +6398,12 @@ message PointInTimeReference {
 }
 message PrefixQuery {
 
-  oneof prefix_query {
-    string value = 1;
+    oneof prefix_query {
+        string value = 1;
 
-    PrefixQueryOneOf prefix_query_one_of = 2;
+        PrefixQueryOneOf prefix_query_one_of = 2;
 
-  }
+    }
 
 }
 message PrefixQueryOneOf {
@@ -6412,7 +6412,7 @@ message PrefixQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  MultiTermQueryRewrite rewrite = 3;
 
@@ -6440,7 +6440,7 @@ message QueryBase {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
 }
 message QueryBreakdown {
@@ -6648,7 +6648,7 @@ message QueryStringQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // If `true`, the wildcard characters `*` and `?` are allowed as the first character of the query string.
   optional  bool allow_leading_wildcard = 3;
@@ -6729,12 +6729,12 @@ message RandomScoreFunction {
 }
 message RandomScoreFunctionSeed {
 
-  oneof random_score_function_seed {
-    int32 int32 = 1;
+    oneof random_score_function_seed {
+        int32 int32 = 1;
 
-    string string = 2;
+        string string = 2;
 
-  }
+    }
 
 }
 message RangeAggregate {
@@ -6800,12 +6800,12 @@ message RangeBucketMap {
 }
 message RangeQuery {
 
-  oneof range_query {
-    NumberRangeQueryParameters number_range_query_parameters = 1;
+    oneof range_query {
+        NumberRangeQueryParameters number_range_query_parameters = 1;
 
-    DateRangeQueryParameters date_range_query_parameters = 2;
+        DateRangeQueryParameters date_range_query_parameters = 2;
 
-  }
+    }
 
 }
 message RangeQueryBase {
@@ -6814,7 +6814,7 @@ message RangeQueryBase {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  RangeRelation relation = 3;
 
@@ -6865,7 +6865,7 @@ message RankFeatureQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
   optional  string field = 3;
@@ -6938,12 +6938,12 @@ enum RateMode {
 }
 message Refresh {
 
-  oneof refresh {
-    bool bool = 1;
+    oneof refresh {
+        bool bool = 1;
 
-    RefreshOneOf refresh_one_of = 2;
+        RefreshOneOf refresh_one_of = 2;
 
-  }
+    }
 
 }
 enum RefreshOneOf {
@@ -6954,12 +6954,12 @@ enum RefreshOneOf {
 }
 message RegexpQuery {
 
-  oneof regexp_query {
-    string value = 1;
+    oneof regexp_query {
+        string value = 1;
 
-    RegexpQueryOneOf regexp_query_one_of = 2;
+        RegexpQueryOneOf regexp_query_one_of = 2;
 
-  }
+    }
 
 }
 message RegexpQueryOneOf {
@@ -6968,7 +6968,7 @@ message RegexpQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`. When `false`, case sensitivity of matching depends on the underlying field's mapping.
   optional  bool case_insensitive = 3;
@@ -7040,65 +7040,65 @@ message ResponseBody {
 
   optional  bool timed_out = 2;
 
-  optional  ShardStatistics shards = 3 [json_name="_shards"];
+  optional  PhaseTook phase_took = 3;
 
-  optional  PhaseTook phase_took = 4;
+  optional  HitsMetadata hits = 4;
 
-  optional  HitsMetadata hits = 5;
+  map<string, Aggregate> aggregations = 5;
 
-  map<string, Aggregate> aggregations = 6;
+  map<string, google.protobuf.Struct> fields = 6;
 
-  optional  ClusterStatistics clusters = 7 [json_name="_clusters"];
+  optional  float max_score = 7;
 
-  map<string, google.protobuf.Struct> fields = 8;
+  optional  int32 num_reduce_phases = 8;
 
-  optional  float max_score = 9;
+  optional  Profile profile = 9;
 
-  optional  int32 num_reduce_phases = 10;
+  optional  string pit_id = 10;
 
-  optional  Profile profile = 11;
+  map<string, SuggestArray> suggest = 11;
 
-  optional  string pit_id = 12;
+  optional  bool terminated_early = 12;
 
-  optional  string scroll_id = 13 [json_name="_scroll_id"];
+  optional  ShardStatistics underscore_shards = 13;
 
-  map<string, SuggestArray> suggest = 14;
+  optional  ClusterStatistics underscore_clusters = 14;
 
-  optional  bool terminated_early = 15;
+  optional  string underscore_scroll_id = 15;
 
 }
 message ResponseItem {
 
 
-  // The document type.
-  optional  string type = 1 [json_name="_type"];
-
-  // The document ID associated with the operation.
-  optional  string id = 2 [json_name="_id"];
-
-  // The name of the index associated with the operation. If the operation targets a data stream, this is the backing index into which the document was written.
-  optional  string index = 3 [json_name="_index"];
-
   // HTTP status code returned for the operation.
-  optional  int32 status = 4;
+  optional  int32 status = 1;
 
-  optional  ErrorCause error = 5;
-
-  // The primary term assigned to the document for the operation.
-  optional  int64 primary_term = 6 [json_name="_primary_term"];
+  optional  ErrorCause error = 2;
 
   // Result of the operation. Successful values are `created`, `deleted`, and `updated`.
-  optional  string result = 7;
+  optional  string result = 3;
 
-  optional  int64 seq_no = 8 [json_name="_seq_no"];
+  optional  bool forced_refresh = 4;
 
-  optional  ShardStatistics shards = 9 [json_name="_shards"];
+  optional  InlineGetDictUserDefined get = 5;
 
-  optional  int64 version = 10 [json_name="_version"];
+  // The document type.
+  optional  string underscore_type = 6;
 
-  optional  bool forced_refresh = 11;
+  // The document ID associated with the operation.
+  optional  string underscore_id = 7;
 
-  optional  InlineGetDictUserDefined get = 12;
+  // The name of the index associated with the operation. If the operation targets a data stream, this is the backing index into which the document was written.
+  optional  string underscore_index = 8;
+
+  // The primary term assigned to the document for the operation.
+  optional  int64 underscore_primary_term = 9;
+
+  optional  int64 underscore_seq_no = 10;
+
+  optional  ShardStatistics underscore_shards = 11;
+
+  optional  int64 underscore_version = 12;
 
 }
 message ResponseItemMap {
@@ -7201,12 +7201,12 @@ message ScoreSort {
 }
 message Script {
 
-  oneof script {
-    InlineScript inline = 1;
+    oneof script {
+        InlineScript inline = 1;
 
-    StoredScriptId stored = 2;
+        StoredScriptId stored = 2;
 
-  }
+    }
 
 }
 message ScriptBase {
@@ -7238,7 +7238,7 @@ message ScriptQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  Script script = 3;
 
@@ -7255,7 +7255,7 @@ message ScriptScoreQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Documents with a score lower than this floating point number are excluded from the search results.
   optional  float min_score = 3;
@@ -7391,54 +7391,54 @@ message SearchRequest {
 
   optional  Sort sort = 21;
 
-  optional  SourceConfig source = 22 [json_name="_source"];
-
   // Array of wildcard (`*`) patterns. The request returns values for field names matching these patterns in the `hits.fields` property of the response.
-  repeated  FieldAndFormat fields = 23;
+  repeated  FieldAndFormat fields = 22;
 
-  optional  Suggester suggest = 24;
+  optional  Suggester suggest = 23;
 
   // Maximum number of documents to collect for each shard. If a query reaches this limit, OpenSearch terminates the query early. OpenSearch collects documents before sorting. Use with caution. OpenSearch applies this parameter to each shard handling the request. When possible, let OpenSearch perform early termination automatically. Avoid specifying this parameter for requests that target data streams with backing indexes across multiple data tiers. If set to `0` (default), the query does not terminate early.
-  optional  int32 terminate_after = 25;
+  optional  int32 terminate_after = 24;
 
   // Specifies the period of time to wait for a response from each shard. If no response is received before the timeout expires, the request fails and returns an error. Defaults to no timeout.
-  optional  string timeout = 26;
+  optional  string timeout = 25;
 
   // If `true`, calculate and return document scores, even if the scores are not used for sorting.
-  optional  bool track_scores = 27;
+  optional  bool track_scores = 26;
 
   // If `true`, returns document version as part of a hit.
-  optional  bool version = 28;
+  optional  bool version = 27;
 
   // If `true`, returns sequence number and primary term of the last modification of each hit.
-  optional  bool seq_no_primary_term = 29;
+  optional  bool seq_no_primary_term = 28;
 
-  optional  Fields stored_fields = 30;
+  optional  Fields stored_fields = 29;
 
-  optional  PointInTimeReference pit = 31;
+  optional  PointInTimeReference pit = 30;
 
   // Stats groups to associate with the search. Each group maintains a statistics aggregation for its associated searches. You can retrieve these stats using the indexes stats API.
-  repeated  string stats = 32;
+  repeated  string stats = 31;
+
+  optional  SourceConfig underscore_source = 32;
 
 }
 message SearchRequestRescore {
 
-  oneof search_request_rescore {
-    Rescore rescore = 1;
+    oneof search_request_rescore {
+        Rescore rescore = 1;
 
-    RescoreArray rescore_array = 2;
+        RescoreArray rescore_array = 2;
 
-  }
+    }
 
 }
 message SearchType {
 
-  oneof search_type {
-    SearchTypeOneOf search_type_one_of = 1;
+    oneof search_type {
+        SearchTypeOneOf search_type_one_of = 1;
 
-    SearchTypeOneOf1 search_type_one_of1 = 2;
+        SearchTypeOneOf1 search_type_one_of1 = 2;
 
-  }
+    }
 
 }
 enum SearchTypeOneOf {
@@ -7786,12 +7786,12 @@ enum SimpleQueryStringFlag {
 }
 message SimpleQueryStringFlags {
 
-  oneof simple_query_string_flags {
-    SimpleQueryStringFlag single = 1;
+    oneof simple_query_string_flags {
+        SimpleQueryStringFlag single = 1;
 
-    string multiple = 2;
+        string multiple = 2;
 
-  }
+    }
 
 }
 message SimpleQueryStringQuery {
@@ -7800,7 +7800,7 @@ message SimpleQueryStringQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Analyzer used to convert text in the query string into tokens.
   optional  string analyzer = 3;
@@ -7950,12 +7950,12 @@ enum SnowballLanguage {
 }
 message Sort {
 
-  oneof sort {
-    SortOptions sort_options = 1;
+    oneof sort {
+        SortOptions sort_options = 1;
 
-    SortOptionsArray sort_options_array = 2;
+        SortOptionsArray sort_options_array = 2;
 
-  }
+    }
 
 }
 enum SortMode {
@@ -7968,18 +7968,18 @@ enum SortMode {
 }
 message SortOptions {
 
-  oneof sort_options {
-    SortOptionsOneOf sort_options_one_of = 1;
+    oneof sort_options {
+        SortOptionsOneOf sort_options_one_of = 1;
 
-    SortOptionsOneOf1 sort_options_one_of1 = 2;
+        SortOptionsOneOf1 sort_options_one_of1 = 2;
 
-    string string = 3;
+        string string = 3;
 
-    SortOptionsOneOf2 sort_options_one_of2 = 4;
+        SortOptionsOneOf2 sort_options_one_of2 = 4;
 
-    FieldSortMap field_sort_map = 5;
+        FieldSortMap field_sort_map = 5;
 
-  }
+    }
 
 }
 message SortOptionsArray {
@@ -7999,13 +7999,13 @@ enum SortOptionsOneOf1 {
 message SortOptionsOneOf2 {
 
 
-  optional  ScoreSort score = 1 [json_name="_score"];
+  optional  ScoreSort underscore_score = 1;
 
-  optional  ScoreSort doc = 2 [json_name="_doc"];
+  optional  ScoreSort underscore_doc = 2;
 
-  optional  GeoDistanceSort geo_distance = 3 [json_name="_geo_distance"];
+  optional  GeoDistanceSort underscore_geo_distance = 3;
 
-  optional  ScriptSort script = 4 [json_name="_script"];
+  optional  ScriptSort underscore_script = 4;
 
 }
 enum SortOptionsOneOf2Not {
@@ -8020,32 +8020,32 @@ enum SortOrder {
 }
 message SourceConfig {
 
-  oneof source_config {
-    bool fetch = 1;
+    oneof source_config {
+        bool fetch = 1;
 
-    SourceFilter filter = 2;
+        SourceFilter filter = 2;
 
-  }
+    }
 
 }
 message SourceConfigParam {
 
-  oneof source_config_param {
-    bool fetch = 1;
+    oneof source_config_param {
+        bool fetch = 1;
 
-    Fields fields = 2;
+        Fields fields = 2;
 
-  }
+    }
 
 }
 message SourceFilter {
 
-  oneof source_filter {
-    Fields includes = 1;
+    oneof source_filter {
+        Fields includes = 1;
 
-    SourceFilterOneOf source_filter_one_of = 2;
+        SourceFilterOneOf source_filter_one_of = 2;
 
-  }
+    }
 
 }
 message SourceFilterOneOf {
@@ -8062,7 +8062,7 @@ message SpanContainingQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  SpanQuery big = 3;
 
@@ -8075,7 +8075,7 @@ message SpanFieldMaskingQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
   optional  string field = 3;
@@ -8089,7 +8089,7 @@ message SpanFirstQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Controls the maximum end position permitted in a match.
   optional  int32 end = 3;
@@ -8103,7 +8103,7 @@ message SpanMultiTermQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  QueryContainer match = 3;
 
@@ -8114,7 +8114,7 @@ message SpanNearQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Array of one or more other span type queries.
   repeated  SpanQuery clauses = 3;
@@ -8132,7 +8132,7 @@ message SpanNotQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // The number of tokens from within the include span that can't have overlap with the exclude span. Equivalent to setting both `pre` and `post`.
   optional  int32 dist = 3;
@@ -8154,7 +8154,7 @@ message SpanOrQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Array of one or more other span type queries.
   repeated  SpanQuery clauses = 3;
@@ -8188,12 +8188,12 @@ message SpanQuery {
 }
 message SpanTermQuery {
 
-  oneof span_term_query {
-    string value = 1;
+    oneof span_term_query {
+        string value = 1;
 
-    SpanTermQueryOneOf span_term_query_one_of = 2;
+        SpanTermQueryOneOf span_term_query_one_of = 2;
 
-  }
+    }
 
 }
 message SpanTermQueryOneOf {
@@ -8202,7 +8202,7 @@ message SpanTermQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  string value = 3;
 
@@ -8213,7 +8213,7 @@ message SpanWithinQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  SpanQuery big = 3;
 
@@ -8473,12 +8473,12 @@ message StringMapArray {
 }
 message StringOrStringArray {
 
-  oneof string_or_string_array {
-    string string = 1;
+    oneof string_or_string_array {
+        string string = 1;
 
-    StringArray string_array = 2;
+        StringArray string_array = 2;
 
-  }
+    }
 
 }
 message StringRareTermsAggregate {
@@ -8543,12 +8543,12 @@ message StringStatsAggregateAllOfAvgLength {
 }
 message StringStatsAggregateAllOfDistribution {
 
-  oneof string_stats_aggregate_all_of_distribution {
-    FloatMap float_map = 1;
+    oneof string_stats_aggregate_all_of_distribution {
+        FloatMap float_map = 1;
 
-    string string = 2;
+        string string = 2;
 
-  }
+    }
 
 }
 message StringStatsAggregateAllOfEntropy {
@@ -8631,14 +8631,14 @@ message StupidBackoffSmoothingModel {
 }
 message Suggest {
 
-  oneof suggest {
-    CompletionSuggest completion = 1;
+    oneof suggest {
+        CompletionSuggest completion = 1;
 
-    PhraseSuggest phrase = 2;
+        PhraseSuggest phrase = 2;
 
-    TermSuggest term = 3;
+        TermSuggest term = 3;
 
-  }
+    }
 
 }
 message SuggestArray {
@@ -8800,12 +8800,12 @@ enum TTestType {
 }
 message TermQuery {
 
-  oneof term_query {
-    FieldValue value = 1;
+    oneof term_query {
+        FieldValue value = 1;
 
-    TermQueryOneOf term_query_one_of = 2;
+        TermQueryOneOf term_query_one_of = 2;
 
-  }
+    }
 
 }
 message TermQueryOneOf {
@@ -8814,7 +8814,7 @@ message TermQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  FieldValue value = 3;
 
@@ -8836,12 +8836,12 @@ message TermSuggest {
 }
 message TermSuggestAllOfOptions {
 
-  oneof term_suggest_all_of_options {
-    TermSuggestOption term_suggest_option = 1;
+    oneof term_suggest_all_of_options {
+        TermSuggestOption term_suggest_option = 1;
 
-    TermSuggestOptionArray term_suggest_option_array = 2;
+        TermSuggestOptionArray term_suggest_option_array = 2;
 
-  }
+    }
 
 }
 message TermSuggestOption {
@@ -9026,24 +9026,24 @@ message TermsBucketBase {
 }
 message TermsExclude {
 
-  oneof terms_exclude {
-    string regexp = 1;
+    oneof terms_exclude {
+        string regexp = 1;
 
-    StringArray string_array = 2;
+        StringArray string_array = 2;
 
-  }
+    }
 
 }
 message TermsInclude {
 
-  oneof terms_include {
-    string regexp = 1;
+    oneof terms_include {
+        string regexp = 1;
 
-    StringArray string_array = 2;
+        StringArray string_array = 2;
 
-    TermsPartition partition = 3;
+        TermsPartition partition = 3;
 
-  }
+    }
 
 }
 message TermsLookup {
@@ -9074,17 +9074,17 @@ message TermsQuery {
 
   optional  google.protobuf.Struct boost = 1;
 
-  optional  google.protobuf.Struct name = 2 [json_name="_name"];
+  optional  google.protobuf.Struct underscore_name = 2;
 
 }
 message TermsQueryField {
 
-  oneof terms_query_field {
-    FieldValueArray field_value_array = 1;
+    oneof terms_query_field {
+        FieldValueArray field_value_array = 1;
 
-    TermsLookup lookup = 2;
+        TermsLookup lookup = 2;
 
-  }
+    }
 
 }
 message TermsSetQuery {
@@ -9093,7 +9093,7 @@ message TermsSetQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
   optional  string minimum_should_match_field = 3;
@@ -9163,18 +9163,18 @@ message TopHitsAggregation {
 
   optional  Sort sort = 10;
 
-  optional  SourceConfig source = 11 [json_name="_source"];
-
-  optional  Fields stored_fields = 12;
+  optional  Fields stored_fields = 11;
 
   // If `true`, calculates and returns document scores, even if the scores are not used for sorting.
-  optional  bool track_scores = 13;
+  optional  bool track_scores = 12;
 
   // If `true`, returns document version as part of a hit.
-  optional  bool version = 14;
+  optional  bool version = 13;
 
   // If `true`, returns sequence number and primary term of the last modification of each hit.
-  optional  bool seq_no_primary_term = 15;
+  optional  bool seq_no_primary_term = 14;
+
+  optional  SourceConfig underscore_source = 15;
 
 }
 message TopLeftBottomRightGeoBounds {
@@ -9221,12 +9221,12 @@ message TopMetricsAggregation {
 }
 message TopMetricsAggregationAllOfMetrics {
 
-  oneof top_metrics_aggregation_all_of_metrics {
-    TopMetricsValue top_metrics_value = 1;
+    oneof top_metrics_aggregation_all_of_metrics {
+        TopMetricsValue top_metrics_value = 1;
 
-    TopMetricsValueArray top_metrics_value_array = 2;
+        TopMetricsValueArray top_metrics_value_array = 2;
 
-  }
+    }
 
 }
 message TopMetricsValue {
@@ -9260,12 +9260,12 @@ message TotalHits {
 }
 message TotalHitsRelation {
 
-  oneof total_hits_relation {
-    TotalHitsRelationOneOf total_hits_relation_one_of = 1;
+    oneof total_hits_relation {
+        TotalHitsRelationOneOf total_hits_relation_one_of = 1;
 
-    TotalHitsRelationOneOf1 total_hits_relation_one_of1 = 2;
+        TotalHitsRelationOneOf1 total_hits_relation_one_of1 = 2;
 
-  }
+    }
 
 }
 enum TotalHitsRelationOneOf {
@@ -9278,12 +9278,12 @@ enum TotalHitsRelationOneOf1 {
 }
 message TrackHits {
 
-  oneof track_hits {
-    bool enabled = 1;
+    oneof track_hits {
+        bool enabled = 1;
 
-    int32 count = 2;
+        int32 count = 2;
 
-  }
+    }
 
 }
 message Type {
@@ -9296,7 +9296,7 @@ message TypeQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  string value = 3;
 
@@ -9370,28 +9370,28 @@ message UpdateAction {
   // When `true`, executes the script whether or not the document exists.
   optional  bool scripted_upsert = 5;
 
-  optional  SourceConfig source = 6 [json_name="_source"];
-
   // If the document does not already exist, the contents of `upsert` are inserted as a new document. If the document exists, the `script` is executed.
-  optional  google.protobuf.Struct upsert = 7;
+  optional  google.protobuf.Struct upsert = 6;
+
+  optional  SourceConfig underscore_source = 7;
 
 }
 message UpdateOperation {
 
 
-  optional  string id = 1 [json_name="_id"];
+  optional  string routing = 1;
 
-  optional  string index = 2 [json_name="_index"];
+  optional  int64 if_primary_term = 2;
 
-  optional  string routing = 3;
+  optional  int64 if_seq_no = 3;
 
-  optional  int64 if_primary_term = 4;
+  optional  int64 version = 4;
 
-  optional  int64 if_seq_no = 5;
+  optional  VersionType version_type = 5;
 
-  optional  int64 version = 6;
+  optional  string underscore_id = 6;
 
-  optional  VersionType version_type = 7;
+  optional  string underscore_index = 7;
 
   // When `true`, the request's actions must target an index alias.
   optional  bool require_alias = 8;
@@ -9416,32 +9416,32 @@ message UpdateRequest {
   // Set to `true` to execute the script whether or not the document exists.
   optional  bool scripted_upsert = 5;
 
-  optional  SourceConfig source = 6 [json_name="_source"];
-
   // If the document does not already exist, the contents of 'upsert' are inserted as a new document. If the document exists, the 'script' is executed.
-  optional  google.protobuf.Struct upsert = 7;
+  optional  google.protobuf.Struct upsert = 6;
+
+  optional  SourceConfig underscore_source = 7;
 
 }
 message UpdateWriteResponseBase {
 
 
-  optional  string type = 1 [json_name="_type"];
+  optional  Result result = 1;
 
-  optional  string id = 2 [json_name="_id"];
+  optional  bool forced_refresh = 2;
 
-  optional  string index = 3 [json_name="_index"];
+  optional  string underscore_type = 3;
 
-  optional  int64 primary_term = 4 [json_name="_primary_term"];
+  optional  string underscore_id = 4;
 
-  optional  Result result = 5;
+  optional  string underscore_index = 5;
 
-  optional  int64 seq_no = 6 [json_name="_seq_no"];
+  optional  int64 underscore_primary_term = 6;
 
-  optional  ShardStatistics shards = 7 [json_name="_shards"];
+  optional  int64 underscore_seq_no = 7;
 
-  optional  int64 version = 8 [json_name="_version"];
+  optional  ShardStatistics underscore_shards = 8;
 
-  optional  bool forced_refresh = 9;
+  optional  int64 underscore_version = 9;
 
   optional  InlineGet get = 10;
 
@@ -9558,12 +9558,12 @@ enum WaitForActiveShardOptions {
 }
 message WaitForActiveShards {
 
-  oneof wait_for_active_shards {
-    int32 count = 1;
+    oneof wait_for_active_shards {
+        int32 count = 1;
 
-    WaitForActiveShardOptions option = 2;
+        WaitForActiveShardOptions option = 2;
 
-  }
+    }
 
 }
 enum Week {
@@ -9624,12 +9624,12 @@ enum WhitespaceAnalyzerType {
 }
 message WildcardQuery {
 
-  oneof wildcard_query {
-    string value = 1;
+    oneof wildcard_query {
+        string value = 1;
 
-    WildcardQueryOneOf wildcard_query_one_of = 2;
+        WildcardQueryOneOf wildcard_query_one_of = 2;
 
-  }
+    }
 
 }
 message WildcardQueryOneOf {
@@ -9638,7 +9638,7 @@ message WildcardQueryOneOf {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // Allows case insensitive matching of the pattern with the indexed field values when set to `true`. Default is `false` which means the case sensitivity of matching depends on the underlying field's mapping.
   optional  bool case_insensitive = 3;
@@ -9664,7 +9664,7 @@ message WrapperQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   // A base64 encoded query. The binary data format can be any of JSON, YAML, CBOR or SMILE encodings
   optional  string query = 3;
@@ -9673,19 +9673,19 @@ message WrapperQuery {
 message WriteOperation {
 
 
-  optional  string id = 1 [json_name="_id"];
+  optional  string routing = 1;
 
-  optional  string index = 2 [json_name="_index"];
+  optional  int64 if_primary_term = 2;
 
-  optional  string routing = 3;
+  optional  int64 if_seq_no = 3;
 
-  optional  int64 if_primary_term = 4;
+  optional  int64 version = 4;
 
-  optional  int64 if_seq_no = 5;
+  optional  VersionType version_type = 5;
 
-  optional  int64 version = 6;
+  optional  string underscore_id = 6;
 
-  optional  VersionType version_type = 7;
+  optional  string underscore_index = 7;
 
   // A map from the full name of fields to the name of dynamic templates. If a name matches a dynamic template, then that template will be applied regardless of other match predicates defined in the template. If a field is already defined in the mapping, then this parameter won't be used.
   map<string, string> dynamic_templates = 8;
@@ -9700,23 +9700,23 @@ message WriteOperation {
 message WriteResponseBase {
 
 
-  optional  string type = 1 [json_name="_type"];
+  optional  Result result = 1;
 
-  optional  string id = 2 [json_name="_id"];
+  optional  bool forced_refresh = 2;
 
-  optional  string index = 3 [json_name="_index"];
+  optional  string underscore_type = 3;
 
-  optional  int64 primary_term = 4 [json_name="_primary_term"];
+  optional  string underscore_id = 4;
 
-  optional  Result result = 5;
+  optional  string underscore_index = 5;
 
-  optional  int64 seq_no = 6 [json_name="_seq_no"];
+  optional  int64 underscore_primary_term = 6;
 
-  optional  ShardStatistics shards = 7 [json_name="_shards"];
+  optional  int64 underscore_seq_no = 7;
 
-  optional  int64 version = 8 [json_name="_version"];
+  optional  ShardStatistics underscore_shards = 8;
 
-  optional  bool forced_refresh = 9;
+  optional  int64 underscore_version = 9;
 
 }
 message XyShape {
@@ -9733,7 +9733,7 @@ message XyShapeQuery {
   // Floating point number used to decrease or increase the relevance scores of the query. Boost values are relative to the default value of 1.0. A boost value between 0 and 1.0 decreases the relevance score. A value greater than 1.0 increases the relevance score.
   optional  float boost = 1;
 
-  optional  string name = 2 [json_name="_name"];
+  optional  string underscore_name = 2;
 
   optional  bool ignore_unmapped = 3;
 
