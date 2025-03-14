@@ -26,15 +26,12 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Create Build Directory
-        run: mkdir -p build
-
       - name: Download Release Assets
         uses: robinraju/release-downloader@v1
         with:
           repository: 'lucy66hw/opensearch-api-specification'
           latest: true
-          fileName: 'build/opensearch-openapi.yaml'
+          fileName: 'opensearch-openapi.yaml'
           tag: 'main-latest'
           token: ${{ secrets.OAS_PAT }}
           preRelease: true
