@@ -43,11 +43,13 @@ Thumbs.db
 node_modules
 
 # build output
-#build/
+build/
 
 #tooling
 spec/protos/.openapi-generator
 spec/protos/README.md
 cloned-repo
+
+opensearch-openapi.yaml
 
 
