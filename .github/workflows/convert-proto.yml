@@ -49,10 +49,10 @@ jobs:
 
       - name: Convert protobuf
         run: |
-          java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/proto-convert/src/config/protobuf-generator-config.yaml -o build
+          java -jar cloned-repo/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -c tools/proto-convert/src/config/protobuf-generator-config.yaml
 
-      - name: Post Process Protobuf
-        run: npm run postprocessing
+#      - name: Post Process Protobuf
+#        run: npm run postprocessing
 
       - name: Configure Git User
         run: |
