@@ -39,7 +39,7 @@ try {
     }
 
 } catch (err) {
-    logger.error(`Error in preprocessing: ${err}`);
+    logger.error(`Error in postprocessing: ${err}`);
     process.exit(1);
 }
 logger.info('Done.')
