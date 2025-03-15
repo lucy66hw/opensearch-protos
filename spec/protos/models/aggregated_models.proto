@@ -1124,7 +1124,7 @@ message BulkRequestInner {
 
   optional  UpdateAction update_action = 2;
 
-  optional  google.protobuf.Struct object = 3;
+  optional  google.protobuf.Struct google_protobuf_struct = 3;
 
 }
 message CalendarInterval {
