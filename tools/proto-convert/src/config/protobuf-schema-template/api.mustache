@@ -18,7 +18,7 @@ message {{operationId}}Request {
   {{#description}}
   // {{{.}}}
   {{/description}}
-  {{#vendorExtensions.x-protobuf-type}}{{.}} {{/vendorExtensions.x-protobuf-type}}{{^isMap}}{{^vendorExtensions.x-protobuf-type}}optional {{/vendorExtensions.x-protobuf-type}} {{/isMap}}{{vendorExtensions.x-protobuf-data-type}} {{paramName}} = {{vendorExtensions.x-protobuf-index}}{{#vendorExtensions.x-protobuf-json-name}} [json_name="{{vendorExtensions.x-protobuf-json-name}}"]{{/vendorExtensions.x-protobuf-json-name}};
+  {{#vendorExtensions.x-protobuf-type}}{{.}} {{/vendorExtensions.x-protobuf-type}}{{vendorExtensions.x-protobuf-data-type}} {{paramName}} = {{vendorExtensions.x-protobuf-index}}{{#vendorExtensions.x-protobuf-json-name}} [json_name="{{vendorExtensions.x-protobuf-json-name}}"]{{/vendorExtensions.x-protobuf-json-name}};
   {{/allParams}}
 
 }
@@ -30,5 +30,15 @@ message {{operationId}}Response {
 }
 
 {{/vendorExtensions.x-grpc-response}}
+
+{{#supportMultipleResponses}}
+message {{operationId}}Response {
+    oneof response {
+    {{#responses}}
+        {{{vendorExtensions.x-oneOf-response-type}}} {{vendorExtensions.x-oneOf-response-name}} = {{vendorExtensions.x-oneOf-response-index}};
+    {{/responses}}
+    }
+}
+{{/supportMultipleResponses}}
 {{/operation}}
 {{/operations}}
