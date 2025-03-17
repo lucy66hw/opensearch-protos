@@ -1212,6 +1212,8 @@ message ChildrenAggregate {
 
   float doc_count = 2;
 
+  map<string, Aggregate> aggregate = 3;
+
 }
 message ChildrenAggregation {
 
@@ -1937,6 +1939,8 @@ message DecayFunction {
 
 
   optional  MultiValueMode multi_value_mode = 1;
+
+  map<string, DecayPlacement> placement = 2;
 
 }
 message DecayFunctionBase {
@@ -2863,6 +2867,8 @@ message FilterAggregate {
 
   float doc_count = 2;
 
+  map<string, Aggregate> aggregate = 3;
+
 }
 message FiltersAggregate {
 
@@ -3092,6 +3098,8 @@ message GeoBoundingBoxQuery {
   // Set to `true` to ignore an unmapped field and not match any documents for this query. Set to `false` to throw an exception if the field is not mapped.
   optional  bool ignore_unmapped = 5;
 
+  map<string, GeoBounds> bounding_box = 6;
+
 }
 message GeoBounds {
 
@@ -3210,6 +3218,8 @@ message GeoDistanceQuery {
 
   // Set to `true` to ignore an unmapped field and not match any documents for this query. Set to `false` to throw an exception if the field is not mapped.
   optional  bool ignore_unmapped = 6;
+
+  map<string, GeoLocation> location = 7;
 
 }
 message GeoDistanceSort {
@@ -3396,6 +3406,8 @@ message GeoPolygonQuery {
   // Set to `true` to ignore an unmapped field and not match any documents for this query. Set to `false` to throw an exception if the field is not mapped.
   optional  bool ignore_unmapped = 4;
 
+  map<string, GeoPolygonPoints> polygon = 5;
+
 }
 message GeoShape {
 
@@ -3415,6 +3427,8 @@ message GeoShapeQuery {
 
   // Set to `true` to ignore an unmapped field and not match any documents for this query. Set to `false` to throw an exception if the field is not mapped.
   optional  bool ignore_unmapped = 3;
+
+  map<string, GeoShapeQueryField> shape = 4;
 
 }
 message GeoShapeQueryField {
@@ -3528,6 +3542,8 @@ message GlobalAggregate {
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
+
+  map<string, Aggregate> aggregate = 3;
 
 }
 message GlobalAggregation {
@@ -5275,6 +5291,8 @@ message MissingAggregate {
 
   float doc_count = 2;
 
+  map<string, Aggregate> aggregate = 3;
+
 }
 message MissingAggregation {
 
@@ -6045,6 +6063,8 @@ message ParentAggregate {
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
+
+  map<string, Aggregate> aggregate = 3;
 
 }
 message ParentAggregation {
@@ -7122,6 +7142,8 @@ message ReverseNestedAggregate {
 
   float doc_count = 2;
 
+  map<string, Aggregate> aggregate = 3;
+
 }
 message ReverseNestedAggregation {
 
@@ -7166,6 +7188,8 @@ message SamplerAggregate {
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
+
+  map<string, Aggregate> aggregate = 3;
 
 }
 message SamplerAggregation {
@@ -7855,6 +7879,8 @@ message SingleBucketAggregateBase {
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
+
+  map<string, Aggregate> aggregate = 3;
 
 }
 message SingleMetricAggregateBase {
@@ -9076,6 +9102,8 @@ message TermsQuery {
 
   optional  google.protobuf.Struct underscore_name = 2;
 
+  map<string, TermsQueryField> terms = 3;
+
 }
 message TermsQueryField {
 
@@ -9327,6 +9355,8 @@ message UnmappedSamplerAggregate {
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
+
+  map<string, Aggregate> aggregate = 3;
 
 }
 message UnmappedSignificantTermsAggregate {
@@ -9736,6 +9766,8 @@ message XyShapeQuery {
   optional  string underscore_name = 2;
 
   optional  bool ignore_unmapped = 3;
+
+  map<string, XyShapeQueryField> xy_shape = 4;
 
 }
 message XyShapeQueryField {
