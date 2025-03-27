@@ -21,6 +21,7 @@ enum Additive {
 message AdjacencyMatrixAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsAdjacencyMatrixBucket buckets = 2;
@@ -29,6 +30,7 @@ message AdjacencyMatrixAggregate {
 message AdjacencyMatrixAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -196,6 +198,7 @@ message Aggregate {
 message AggregateBase {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
 }
@@ -212,6 +215,7 @@ message AggregateOrder {
 message Aggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -254,6 +258,7 @@ message AggregationContainer {
   // Sub-aggregations for this aggregation. Only applies to bucket aggregations.
   map<string, AggregationContainer> aggs = 2;
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 3;
 
   AdjacencyMatrixAggregation adjacency_matrix = 4;
@@ -584,6 +589,7 @@ message ArrayPercentilesItemValue {
 message AutoDateHistogramAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsDateHistogramBucket buckets = 2;
@@ -595,6 +601,7 @@ message AutoDateHistogramAggregate {
 message AutoDateHistogramAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -638,6 +645,7 @@ message AverageAggregation {
 message AverageBucketAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -653,6 +661,7 @@ message AverageBucketAggregation {
 message AvgAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -751,6 +760,7 @@ enum BoundaryScanner {
 message BoxPlotAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float min = 2;
@@ -799,6 +809,7 @@ message BoxplotAggregation {
 message BucketAggregationBase {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -807,6 +818,7 @@ message BucketAggregationBase {
 message BucketMetricValueAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -819,6 +831,7 @@ message BucketMetricValueAggregate {
 message BucketPathAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -829,6 +842,7 @@ message BucketPathAggregation {
 message BucketScriptAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -846,6 +860,7 @@ message BucketScriptAggregation {
 message BucketSelectorAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -863,6 +878,7 @@ message BucketSelectorAggregation {
 message BucketSortAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -1152,6 +1168,7 @@ message CalendarInterval {
 message CardinalityAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float value = 2;
@@ -1208,6 +1225,7 @@ enum ChildScoreMode {
 message ChildrenAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
@@ -1218,6 +1236,7 @@ message ChildrenAggregate {
 message ChildrenAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -1483,6 +1502,7 @@ message CompletionSuggester {
 message CompositeAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsCompositeBucket buckets = 2;
@@ -1493,6 +1513,7 @@ message CompositeAggregate {
 message CompositeAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -1568,7 +1589,7 @@ message CompositeDateHistogramAggregationSource {
   // A date histogram interval, similar to `Duration`, with support for additional units: `w` (week), `M` (month), `q` (quarter), and `y` (year).
   optional  string fixed_interval = 9;
 
-  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.
+  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts `0` without a unit and `-1` to indicate an unspecified value.
   optional  string offset = 10;
 
   optional  string time_zone = 11;
@@ -1678,12 +1699,16 @@ message ContextArray {
 message CoordsGeoBounds {
 
 
+  // The top boundary latitude.
   double top = 1;
 
+  // The bottom boundary latitude.
   double bottom = 2;
 
+  // The left boundary longitude.
   double left = 3;
 
+  // The right boundary longitude.
   double right = 4;
 
 }
@@ -1694,6 +1719,7 @@ message CreateOperation {
 message CumulativeCardinalityAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float value = 2;
@@ -1704,6 +1730,7 @@ message CumulativeCardinalityAggregate {
 message CumulativeCardinalityAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -1719,6 +1746,7 @@ message CumulativeCardinalityAggregation {
 message CumulativeSumAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -1756,12 +1784,12 @@ message DateDecayPlacement {
 
   optional  double decay = 1;
 
-  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.
+  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts `0` without a unit and `-1` to indicate an unspecified value.
   optional  string offset = 2;
 
   optional  string origin = 3;
 
-  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.
+  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts `0` without a unit and `-1` to indicate an unspecified value.
   optional  string scale = 4;
 
 }
@@ -1772,6 +1800,7 @@ message DateFormat {
 message DateHistogramAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsDateHistogramBucket buckets = 2;
@@ -1780,6 +1809,7 @@ message DateHistogramAggregate {
 message DateHistogramAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -1793,13 +1823,13 @@ message DateHistogramAggregation {
   // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
   optional  string field = 6;
 
-  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.
+  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts `0` without a unit and `-1` to indicate an unspecified value.
   optional  string fixed_interval = 7;
 
   // The date format used to format `key_as_string` in the response. If no `format` is specified, the first date format specified in the field mapping is used.
   optional  string format = 8;
 
-  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.
+  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts `0` without a unit and `-1` to indicate an unspecified value.
   optional  string interval = 9;
 
   // Only returns buckets that have `min_doc_count` number of documents. By default, all buckets between the first bucket that matches documents and the last one are returned.
@@ -1807,7 +1837,7 @@ message DateHistogramAggregation {
 
   optional  string missing = 11;
 
-  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.
+  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts `0` without a unit and `-1` to indicate an unspecified value.
   optional  string offset = 12;
 
   optional  HistogramOrder order = 13;
@@ -1852,6 +1882,7 @@ message DateMath {
 message DateRangeAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsRangeBucket buckets = 2;
@@ -1860,6 +1891,7 @@ message DateRangeAggregate {
 message DateRangeAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -1966,6 +1998,7 @@ message DeleteOperation {
 message DerivativeAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -1980,6 +2013,7 @@ message DerivativeAggregate {
 message DerivativeAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -2047,7 +2081,7 @@ message DistanceFeatureQuery {
 
   string origin = 3;
 
-  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.
+  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts `0` without a unit and `-1` to indicate an unspecified value.
   string pivot = 4;
 
   // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
@@ -2081,6 +2115,7 @@ message DistanceUnit {
 message DiversifiedSamplerAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -2108,6 +2143,7 @@ message DoubleArray {
 message DoubleTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsDoubleTermsBucket buckets = 2;
@@ -2220,6 +2256,7 @@ message EwmaModelSettings {
 message EwmaMovingAverageAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -2383,6 +2420,7 @@ message ExtendedBoundsdouble {
 message ExtendedStatsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float count = 2;
@@ -2507,6 +2545,7 @@ message ExtendedStatsAggregation {
 message ExtendedStatsBucketAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float count = 2;
@@ -2559,6 +2598,7 @@ message ExtendedStatsBucketAggregate {
 message ExtendedStatsBucketAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -2689,6 +2729,7 @@ message FieldDateMath {
 message FieldLookup {
 
 
+  // The unique identifier for a resource.
   string id = 1;
 
   optional  string index = 2;
@@ -2702,6 +2743,7 @@ message FieldLookup {
 message FieldSort {
 
     oneof field_sort {
+        // The sort order direction.
         SortOrder order = 1;
 
         FieldSortOneOf field_sort_one_of = 2;
@@ -2712,31 +2754,62 @@ message FieldSort {
 message FieldSortMap {
 
 
+  // Sort by field options.
   map<string, FieldSort> field_sort_map = 1;
 
 }
-enum FieldSortNumericType {
-  FIELD_SORT_NUMERIC_TYPE_UNSPECIFIED = 0;
-  FIELD_SORT_NUMERIC_TYPE_DATE = 1;
-  FIELD_SORT_NUMERIC_TYPE_DATE_NANOS = 2;
-  FIELD_SORT_NUMERIC_TYPE_DOUBLE = 3;
-  FIELD_SORT_NUMERIC_TYPE_LONG = 4;
+message FieldSortNumericType {
+
+    oneof field_sort_numeric_type {
+        FieldSortNumericTypeOneOf field_sort_numeric_type_one_of = 1;
+
+        FieldSortNumericTypeOneOf1 field_sort_numeric_type_one_of1 = 2;
+
+        FieldSortNumericTypeOneOf2 field_sort_numeric_type_one_of2 = 3;
+
+        FieldSortNumericTypeOneOf3 field_sort_numeric_type_one_of3 = 4;
+
+    }
+
+}
+enum FieldSortNumericTypeOneOf {
+  FIELD_SORT_NUMERIC_TYPE_ONE_OF_UNSPECIFIED = 0;
+  FIELD_SORT_NUMERIC_TYPE_ONE_OF_DATE = 1;
+}
+enum FieldSortNumericTypeOneOf1 {
+  FIELD_SORT_NUMERIC_TYPE_ONE_OF1_UNSPECIFIED = 0;
+  FIELD_SORT_NUMERIC_TYPE_ONE_OF1_DATE_NANOS = 1;
+}
+enum FieldSortNumericTypeOneOf2 {
+  FIELD_SORT_NUMERIC_TYPE_ONE_OF2_UNSPECIFIED = 0;
+  FIELD_SORT_NUMERIC_TYPE_ONE_OF2_DOUBLE = 1;
+}
+enum FieldSortNumericTypeOneOf3 {
+  FIELD_SORT_NUMERIC_TYPE_ONE_OF3_UNSPECIFIED = 0;
+  FIELD_SORT_NUMERIC_TYPE_ONE_OF3_LONG = 1;
 }
 message FieldSortOneOf {
 
 
+  // The value to use when the field is missing.
   optional  FieldValue missing = 1;
 
+  // The mode for sorting on array fields.
   optional  SortMode mode = 2;
 
+  // The nested path sort options.
   optional  NestedSortValue nested = 3;
 
+  // The sort order direction.
   optional  SortOrder order = 4;
 
+  // The type to use for unmapped fields.
   optional  FieldType unmapped_type = 5;
 
+  // The numeric type to use for sorting.
   optional  FieldSortNumericType numeric_type = 6;
 
+  // The format to use for the sort values.
   optional  string format = 7;
 
 }
@@ -2863,6 +2936,7 @@ message Fields {
 message FilterAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
@@ -2873,6 +2947,7 @@ message FilterAggregate {
 message FiltersAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsFiltersBucket buckets = 2;
@@ -2881,6 +2956,7 @@ message FiltersAggregate {
 message FiltersAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -3035,8 +3111,10 @@ message FunctionScoreQuery {
 message Fuzziness {
 
     oneof fuzziness {
+        // The fuzziness value as `AUTO`, or a string edit distance.
         string string = 1;
 
+        // The fuzziness value as a numeric edit distance.
         int32 int32 = 2;
 
     }
@@ -3104,12 +3182,16 @@ message GeoBoundingBoxQuery {
 message GeoBounds {
 
     oneof geo_bounds {
+        // The bounds specified using coordinate values.
         CoordsGeoBounds coords = 1;
 
+        // The bounds specified using upper-left and lower-right points.
         TopLeftBottomRightGeoBounds tlbr = 2;
 
+        // The bounds specified using upper-right and lower-left points.
         TopRightBottomLeftGeoBounds trbl = 3;
 
+        // The bounds specified using WKT format.
         WktGeoBounds wkt = 4;
 
     }
@@ -3118,6 +3200,7 @@ message GeoBounds {
 message GeoBoundsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  GeoBounds bounds = 2;
@@ -3140,6 +3223,7 @@ message GeoBoundsAggregation {
 message GeoCentroidAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float count = 2;
@@ -3177,6 +3261,7 @@ message GeoDecayPlacement {
 message GeoDistanceAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsRangeBucket buckets = 2;
@@ -3185,6 +3270,7 @@ message GeoDistanceAggregate {
 message GeoDistanceAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -3236,10 +3322,23 @@ message GeoDistanceSort {
   optional  DistanceUnit unit = 5;
 
 }
-enum GeoDistanceType {
-  GEO_DISTANCE_TYPE_UNSPECIFIED = 0;
-  GEO_DISTANCE_TYPE_ARC = 1;
-  GEO_DISTANCE_TYPE_PLANE = 2;
+message GeoDistanceType {
+
+    oneof geo_distance_type {
+        GeoDistanceTypeOneOf geo_distance_type_one_of = 1;
+
+        GeoDistanceTypeOneOf1 geo_distance_type_one_of1 = 2;
+
+    }
+
+}
+enum GeoDistanceTypeOneOf {
+  GEO_DISTANCE_TYPE_ONE_OF_UNSPECIFIED = 0;
+  GEO_DISTANCE_TYPE_ONE_OF_ARC = 1;
+}
+enum GeoDistanceTypeOneOf1 {
+  GEO_DISTANCE_TYPE_ONE_OF1_UNSPECIFIED = 0;
+  GEO_DISTANCE_TYPE_ONE_OF1_PLANE = 1;
 }
 enum GeoExecution {
   GEO_EXECUTION_UNSPECIFIED = 0;
@@ -3253,6 +3352,7 @@ message GeoHash {
 message GeoHashGridAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsGeoHashGridBucket buckets = 2;
@@ -3261,6 +3361,7 @@ message GeoHashGridAggregate {
 message GeoHashGridAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -3284,6 +3385,7 @@ message GeoHashGridBucket {
 
   float doc_count = 1;
 
+  // The geohash string representation of a geographical location.
   string key = 2;
 
 }
@@ -3302,6 +3404,7 @@ message GeoHashGridBucketMap {
 message GeoHashLocation {
 
 
+  // The geohash string representation of a geographical location.
   string geohash = 1;
 
 }
@@ -3328,6 +3431,7 @@ message GeoLine {
 message GeoLineAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   string type = 2;
@@ -3370,12 +3474,15 @@ message GeoLineSort {
 message GeoLocation {
 
     oneof geo_location {
+        // The location specified using latitude and longitude coordinates.
         LatLonGeoLocation latlon = 1;
 
+        // The location specified using a geohash value.
         GeoHashLocation geohash = 2;
 
         DoubleArray double_array = 3;
 
+        // The location specified as a string in `lat,lon` or WKT format.
         string text = 4;
 
     }
@@ -3455,6 +3562,7 @@ message GeoTile {
 message GeoTileGridAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsGeoTileGridBucket buckets = 2;
@@ -3463,6 +3571,7 @@ message GeoTileGridAggregate {
 message GeoTileGridAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -3519,10 +3628,12 @@ message GetResult {
 
   bool found = 2;
 
+  // The type of document or resource.
   optional  string underscore_type = 3;
 
   optional  string underscore_index = 4;
 
+  // The unique identifier for a resource.
   optional  string underscore_id = 5;
 
   optional  float underscore_primary_term = 6;
@@ -3539,6 +3650,7 @@ message GetResult {
 message GlobalAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
@@ -3549,6 +3661,7 @@ message GlobalAggregate {
 message GlobalAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -3618,6 +3731,7 @@ message HdrMethod {
 message HdrPercentileRanksAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   Percentiles values = 2;
@@ -3626,6 +3740,7 @@ message HdrPercentileRanksAggregate {
 message HdrPercentilesAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   Percentiles values = 2;
@@ -3847,6 +3962,7 @@ message HighlighterType {
 message HistogramAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsHistogramBucket buckets = 2;
@@ -3855,6 +3971,7 @@ message HistogramAggregate {
 message HistogramAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -3933,10 +4050,12 @@ message Hit {
 
   repeated  FieldValue sort = 6;
 
+  // The type of document or resource.
   optional  string underscore_type = 7;
 
   optional  string underscore_index = 8;
 
+  // The unique identifier for a resource.
   optional  string underscore_id = 9;
 
   optional  HitUnderscoreScore underscore_score = 10;
@@ -4009,6 +4128,7 @@ message HoltLinearModelSettings {
 message HoltMovingAverageAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -4054,6 +4174,7 @@ message HoltWintersModelSettings {
 message HoltWintersMovingAverageAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -4105,6 +4226,8 @@ message HybridQuery {
 
   repeated  QueryContainer queries = 3;
 
+  optional  int32 pagination_depth = 4;
+
 }
 message IcuAnalyzer {
 
@@ -4138,6 +4261,7 @@ message Id {
 message Ids {
 
     oneof ids {
+        // The unique identifier for a resource.
         string string = 1;
 
         StringArray string_array = 2;
@@ -4185,6 +4309,7 @@ message Indices {
 message InferenceAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  FieldValue value = 2;
@@ -4199,6 +4324,7 @@ message InferenceAggregate {
 message InferenceAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -4210,6 +4336,7 @@ message InferenceAggregation {
 
   optional  GapPolicy gap_policy = 5;
 
+  // The name of a resource or configuration element.
   string model_id = 6;
 
   optional  InferenceConfigContainer inference_config = 7;
@@ -4304,10 +4431,12 @@ message InlineObject1 {
 
   optional  InlineGet get = 3;
 
+  // The type of document or resource.
   optional  string underscore_type = 4;
 
   optional  string underscore_index = 5;
 
+  // The unique identifier for a resource.
   optional  string underscore_id = 6;
 
 }
@@ -4338,6 +4467,7 @@ message InlineScriptOneOf {
 message InnerHits {
 
 
+  // The name of a resource or configuration element.
   optional  string name = 1;
 
   // The maximum number of hits to return per `inner_hits`.
@@ -4539,6 +4669,7 @@ message IntervalsWildcard {
 message IpRangeAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsIpRangeBucket buckets = 2;
@@ -4547,6 +4678,7 @@ message IpRangeAggregate {
 message IpRangeAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -4751,10 +4883,10 @@ message LaplaceSmoothingModel {
 message LatLonGeoLocation {
 
 
-  // Latitude
+  // The latitude coordinate.
   double lat = 1;
 
-  // Longitude
+  // The longitude coordinate.
   double lon = 2;
 
 }
@@ -4789,10 +4921,12 @@ message LikeDocument {
 
   optional  VersionType version_type = 6;
 
+  // The unique identifier for a resource.
   optional  string underscore_id = 7;
 
   optional  string underscore_index = 8;
 
+  // The type of document or resource.
   optional  string underscore_type = 9;
 
 }
@@ -4809,6 +4943,7 @@ message LinearInterpolationSmoothingModel {
 message LinearMovingAverageAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -4838,6 +4973,7 @@ enum LinearMovingAverageAggregationAllOfModel {
 message LongRareTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsLongRareTermsBucket buckets = 2;
@@ -4868,6 +5004,7 @@ message LongRareTermsBucketMap {
 message LongTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsLongTermsBucket buckets = 2;
@@ -5079,6 +5216,7 @@ message MatchQueryOneOf {
 message MatrixAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -5092,6 +5230,7 @@ message MatrixAggregation {
 message MatrixStatsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
@@ -5102,6 +5241,7 @@ message MatrixStatsAggregate {
 message MatrixStatsAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -5138,6 +5278,7 @@ message MatrixStatsFields {
 message MaxAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -5161,6 +5302,7 @@ message MaxAggregation {
 message MaxBucketAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -5176,6 +5318,7 @@ message MaxBucketAggregation {
 message MedianAbsoluteDeviationAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -5225,6 +5368,7 @@ enum Millimeters {
 message MinAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -5248,6 +5392,7 @@ message MinAggregation {
 message MinBucketAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -5287,6 +5432,7 @@ enum Minute {
 message MissingAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
@@ -5297,6 +5443,7 @@ message MissingAggregate {
 message MissingAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -5417,6 +5564,7 @@ message MovingAverageAggregation {
 message MovingAverageAggregationBase {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -5438,6 +5586,7 @@ message MovingAverageAggregationBase {
 message MovingFunctionAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -5462,6 +5611,7 @@ message MovingFunctionAggregation {
 message MovingPercentilesAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -5485,6 +5635,7 @@ message MovingPercentilesAggregation {
 message MultiBucketAggregateBaseAdjacencyMatrixBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsAdjacencyMatrixBucket buckets = 2;
@@ -5493,6 +5644,7 @@ message MultiBucketAggregateBaseAdjacencyMatrixBucket {
 message MultiBucketAggregateBaseCompositeBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsCompositeBucket buckets = 2;
@@ -5501,6 +5653,7 @@ message MultiBucketAggregateBaseCompositeBucket {
 message MultiBucketAggregateBaseDateHistogramBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsDateHistogramBucket buckets = 2;
@@ -5509,6 +5662,7 @@ message MultiBucketAggregateBaseDateHistogramBucket {
 message MultiBucketAggregateBaseDoubleTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsDoubleTermsBucket buckets = 2;
@@ -5517,6 +5671,7 @@ message MultiBucketAggregateBaseDoubleTermsBucket {
 message MultiBucketAggregateBaseFiltersBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsFiltersBucket buckets = 2;
@@ -5525,6 +5680,7 @@ message MultiBucketAggregateBaseFiltersBucket {
 message MultiBucketAggregateBaseGeoHashGridBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsGeoHashGridBucket buckets = 2;
@@ -5533,6 +5689,7 @@ message MultiBucketAggregateBaseGeoHashGridBucket {
 message MultiBucketAggregateBaseGeoTileGridBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsGeoTileGridBucket buckets = 2;
@@ -5541,6 +5698,7 @@ message MultiBucketAggregateBaseGeoTileGridBucket {
 message MultiBucketAggregateBaseHistogramBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsHistogramBucket buckets = 2;
@@ -5549,6 +5707,7 @@ message MultiBucketAggregateBaseHistogramBucket {
 message MultiBucketAggregateBaseIpRangeBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsIpRangeBucket buckets = 2;
@@ -5557,6 +5716,7 @@ message MultiBucketAggregateBaseIpRangeBucket {
 message MultiBucketAggregateBaseLongRareTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsLongRareTermsBucket buckets = 2;
@@ -5565,6 +5725,7 @@ message MultiBucketAggregateBaseLongRareTermsBucket {
 message MultiBucketAggregateBaseLongTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsLongTermsBucket buckets = 2;
@@ -5573,6 +5734,7 @@ message MultiBucketAggregateBaseLongTermsBucket {
 message MultiBucketAggregateBaseMultiTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsMultiTermsBucket buckets = 2;
@@ -5581,6 +5743,7 @@ message MultiBucketAggregateBaseMultiTermsBucket {
 message MultiBucketAggregateBaseRangeBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsRangeBucket buckets = 2;
@@ -5589,6 +5752,7 @@ message MultiBucketAggregateBaseRangeBucket {
 message MultiBucketAggregateBaseSignificantLongTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsSignificantLongTermsBucket buckets = 2;
@@ -5597,6 +5761,7 @@ message MultiBucketAggregateBaseSignificantLongTermsBucket {
 message MultiBucketAggregateBaseSignificantStringTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsSignificantStringTermsBucket buckets = 2;
@@ -5605,6 +5770,7 @@ message MultiBucketAggregateBaseSignificantStringTermsBucket {
 message MultiBucketAggregateBaseStringRareTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsStringRareTermsBucket buckets = 2;
@@ -5613,6 +5779,7 @@ message MultiBucketAggregateBaseStringRareTermsBucket {
 message MultiBucketAggregateBaseStringTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsStringTermsBucket buckets = 2;
@@ -5621,6 +5788,7 @@ message MultiBucketAggregateBaseStringTermsBucket {
 message MultiBucketAggregateBaseVariableWidthHistogramBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsVariableWidthHistogramBucket buckets = 2;
@@ -5629,6 +5797,7 @@ message MultiBucketAggregateBaseVariableWidthHistogramBucket {
 message MultiBucketAggregateBaseVoid {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsVoid buckets = 2;
@@ -5706,7 +5875,15 @@ message MultiTermQueryRewrite {
     oneof multi_term_query_rewrite {
         MultiTermQueryRewriteOneOf multi_term_query_rewrite_one_of = 1;
 
-        string string = 2;
+        MultiTermQueryRewriteOneOf1 multi_term_query_rewrite_one_of1 = 2;
+
+        MultiTermQueryRewriteOneOf2 multi_term_query_rewrite_one_of2 = 3;
+
+        // The top terms query rewrite method with optional parameters.
+        string string = 4;
+
+        // The top terms query rewrite method with optional parameters.
+        string string = 5;
 
     }
 
@@ -5714,12 +5891,19 @@ message MultiTermQueryRewrite {
 enum MultiTermQueryRewriteOneOf {
   MULTI_TERM_QUERY_REWRITE_ONE_OF_UNSPECIFIED = 0;
   MULTI_TERM_QUERY_REWRITE_ONE_OF_CONSTANT_SCORE = 1;
-  MULTI_TERM_QUERY_REWRITE_ONE_OF_CONSTANT_SCORE_BOOLEAN = 2;
-  MULTI_TERM_QUERY_REWRITE_ONE_OF_SCORING_BOOLEAN = 3;
+}
+enum MultiTermQueryRewriteOneOf1 {
+  MULTI_TERM_QUERY_REWRITE_ONE_OF1_UNSPECIFIED = 0;
+  MULTI_TERM_QUERY_REWRITE_ONE_OF1_CONSTANT_SCORE_BOOLEAN = 1;
+}
+enum MultiTermQueryRewriteOneOf2 {
+  MULTI_TERM_QUERY_REWRITE_ONE_OF2_UNSPECIFIED = 0;
+  MULTI_TERM_QUERY_REWRITE_ONE_OF2_SCORING_BOOLEAN = 1;
 }
 message MultiTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsMultiTermsBucket buckets = 2;
@@ -5732,6 +5916,7 @@ message MultiTermsAggregate {
 message MultiTermsAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -5815,6 +6000,7 @@ enum NauticalMiles {
 message NestedAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  float doc_count = 2;
@@ -5823,6 +6009,7 @@ message NestedAggregate {
 message NestedAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -5926,6 +6113,7 @@ enum NoriDecompoundMode {
 message NormalizeAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -6033,6 +6221,7 @@ message OperationBase {
 
   optional  VersionType version_type = 5;
 
+  // The unique identifier for a resource.
   optional  string underscore_id = 6;
 
   optional  string underscore_index = 7;
@@ -6060,6 +6249,7 @@ enum Operator {
 message ParentAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
@@ -6070,6 +6260,7 @@ message ParentAggregate {
 message ParentAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -6085,6 +6276,7 @@ message ParentIdQuery {
 
   optional  string underscore_name = 2;
 
+  // The unique identifier for a resource.
   optional  string id = 3;
 
   // Set to `true` to ignore an unmapped field and not match any documents for this query. Set to `false` to throw an exception if the field is not mapped.
@@ -6150,6 +6342,7 @@ message Percentiles {
 message PercentilesAggregateBase {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   Percentiles values = 2;
@@ -6181,6 +6374,7 @@ message PercentilesAggregation {
 message PercentilesBucketAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   Percentiles values = 2;
@@ -6189,6 +6383,7 @@ message PercentilesBucketAggregate {
 message PercentilesBucketAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -6220,6 +6415,7 @@ message PercolateQuery {
   // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
   string field = 5;
 
+  // The unique identifier for a resource.
   optional  string id = 6;
 
   optional  string index = 7;
@@ -6370,6 +6566,7 @@ message PhraseSuggester {
 message PinnedDoc {
 
 
+  // The unique identifier for a resource.
   optional  string underscore_id = 1;
 
   optional  string underscore_index = 2;
@@ -6395,6 +6592,7 @@ message PinnedQuery {
 message PipelineAggregationBase {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -6410,9 +6608,10 @@ message PipelineAggregationBase {
 message PointInTimeReference {
 
 
+  // The unique identifier for a resource.
   string id = 1;
 
-  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.
+  // A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts `0` without a unit and `-1` to indicate an unspecified value.
   optional  string keep_alive = 2;
 
 }
@@ -6760,6 +6959,7 @@ message RandomScoreFunctionSeed {
 message RangeAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsRangeBucket buckets = 2;
@@ -6768,6 +6968,7 @@ message RangeAggregate {
 message RangeAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -6902,6 +7103,7 @@ message RankFeatureQuery {
 message RareTermsAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -6927,6 +7129,7 @@ message RareTermsAggregation {
 message RateAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float value = 2;
@@ -7074,6 +7277,7 @@ message ResponseBody {
 
   optional  Profile profile = 9;
 
+  // The unique identifier for a resource.
   optional  string pit_id = 10;
 
   map<string, SuggestArray> suggest = 11;
@@ -7138,6 +7342,7 @@ enum Result {
 message ReverseNestedAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
@@ -7148,6 +7353,7 @@ message ReverseNestedAggregate {
 message ReverseNestedAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -7185,6 +7391,7 @@ message RrfRank {
 message SamplerAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
@@ -7195,6 +7402,7 @@ message SamplerAggregate {
 message SamplerAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -7243,8 +7451,10 @@ message ScriptBase {
 message ScriptField {
 
 
+  // The script to execute for this field.
   Script script = 1;
 
+  // Whether to ignore failures during script execution.
   optional  bool ignore_failure = 2;
 
 }
@@ -7318,6 +7528,7 @@ message ScriptedHeuristic {
 message ScriptedMetricAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   google.protobuf.Struct value = 2;
@@ -7485,6 +7696,7 @@ message SequenceNumber {
 message SerialDifferencingAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -7543,6 +7755,7 @@ message ShardStatistics {
 message SignificantLongTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsSignificantLongTermsBucket buckets = 2;
@@ -7581,6 +7794,7 @@ message SignificantLongTermsBucketMap {
 message SignificantStringTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsSignificantStringTermsBucket buckets = 2;
@@ -7617,6 +7831,7 @@ message SignificantStringTermsBucketMap {
 message SignificantTermsAggregateBaseSignificantLongTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsSignificantLongTermsBucket buckets = 2;
@@ -7629,6 +7844,7 @@ message SignificantTermsAggregateBaseSignificantLongTermsBucket {
 message SignificantTermsAggregateBaseSignificantStringTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsSignificantStringTermsBucket buckets = 2;
@@ -7641,6 +7857,7 @@ message SignificantTermsAggregateBaseSignificantStringTermsBucket {
 message SignificantTermsAggregateBaseVoid {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsVoid buckets = 2;
@@ -7653,6 +7870,7 @@ message SignificantTermsAggregateBaseVoid {
 message SignificantTermsAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -7706,6 +7924,7 @@ message SignificantTermsBucketBase {
 message SignificantTextAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -7766,6 +7985,7 @@ enum SimpleAnalyzerType {
 message SimpleMovingAverageAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -7866,6 +8086,7 @@ message SimpleQueryStringQuery {
 message SimpleValueAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -7876,6 +8097,7 @@ message SimpleValueAggregate {
 message SingleBucketAggregateBase {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
@@ -7886,6 +8108,7 @@ message SingleBucketAggregateBase {
 message SingleMetricAggregateBase {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -7977,6 +8200,7 @@ enum SnowballLanguage {
 message Sort {
 
     oneof sort {
+        // The single sort option.
         SortOptions sort_options = 1;
 
         SortOptionsArray sort_options_array = 2;
@@ -7999,6 +8223,7 @@ message SortOptions {
 
         SortOptionsOneOf1 sort_options_one_of1 = 2;
 
+        // Sort by field name.
         string string = 3;
 
         SortOptionsOneOf2 sort_options_one_of2 = 4;
@@ -8011,6 +8236,7 @@ message SortOptions {
 message SortOptionsArray {
 
 
+  // The list of sort options.
   repeated  SortOptions sort_options_array = 1;
 
 }
@@ -8344,6 +8570,7 @@ message StandardDeviationBoundsUpperSampling {
 message StatsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float count = 2;
@@ -8405,6 +8632,7 @@ message StatsAggregation {
 message StatsBucketAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float count = 2;
@@ -8429,6 +8657,7 @@ message StatsBucketAggregate {
 message StatsBucketAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -8468,6 +8697,7 @@ message StoredScriptId {
   // Specifies any named parameters that are passed into the script as variables.  Use parameters instead of hard-coded values to decrease compilation time. 
   google.protobuf.Struct params = 1;
 
+  // The unique identifier for a resource.
   string id = 2;
 
 }
@@ -8510,6 +8740,7 @@ message StringOrStringArray {
 message StringRareTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsStringRareTermsBucket buckets = 2;
@@ -8538,6 +8769,7 @@ message StringRareTermsBucketMap {
 message StringStatsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float count = 2;
@@ -8618,6 +8850,7 @@ message StringStatsAggregation {
 message StringTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsStringTermsBucket buckets = 2;
@@ -8728,6 +8961,7 @@ message SuggesterBase {
 message SumAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -8751,6 +8985,7 @@ message SumAggregation {
 message SumBucketAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -8773,6 +9008,7 @@ message TDigest {
 message TDigestPercentileRanksAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   Percentiles values = 2;
@@ -8781,6 +9017,7 @@ message TDigestPercentileRanksAggregate {
 message TDigestPercentilesAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   Percentiles values = 2;
@@ -8789,6 +9026,7 @@ message TDigestPercentilesAggregate {
 message TTestAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   TTestAggregateAllOfValue value = 2;
@@ -8807,6 +9045,7 @@ message TTestAggregateAllOfValue {
 message TTestAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -8927,6 +9166,7 @@ message TermSuggester {
 message TermsAggregateBaseDoubleTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsDoubleTermsBucket buckets = 2;
@@ -8939,6 +9179,7 @@ message TermsAggregateBaseDoubleTermsBucket {
 message TermsAggregateBaseLongTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsLongTermsBucket buckets = 2;
@@ -8951,6 +9192,7 @@ message TermsAggregateBaseLongTermsBucket {
 message TermsAggregateBaseMultiTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsMultiTermsBucket buckets = 2;
@@ -8963,6 +9205,7 @@ message TermsAggregateBaseMultiTermsBucket {
 message TermsAggregateBaseStringTermsBucket {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsStringTermsBucket buckets = 2;
@@ -8975,6 +9218,7 @@ message TermsAggregateBaseStringTermsBucket {
 message TermsAggregateBaseVoid {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsVoid buckets = 2;
@@ -8987,6 +9231,7 @@ message TermsAggregateBaseVoid {
 message TermsAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -9077,6 +9322,7 @@ message TermsLookup {
 
   optional  string index = 1;
 
+  // The unique identifier for a resource.
   optional  string id = 2;
 
   // The path to a field or an array of paths. Some APIs support wildcards in the path, which allows you to select multiple fields.
@@ -9158,6 +9404,7 @@ message TimeZone {
 message TopHitsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   HitsMetadata hits = 2;
@@ -9208,8 +9455,10 @@ message TopHitsAggregation {
 message TopLeftBottomRightGeoBounds {
 
 
+  // The upper-left corner coordinates.
   GeoLocation top_left = 1;
 
+  // The lower-right corner coordinates.
   GeoLocation bottom_right = 2;
 
 }
@@ -9224,6 +9473,7 @@ message TopMetrics {
 message TopMetricsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   repeated TopMetrics top = 2;
@@ -9273,8 +9523,10 @@ message TopMetricsValueArray {
 message TopRightBottomLeftGeoBounds {
 
 
+  // The upper-right corner coordinates.
   GeoLocation top_right = 1;
 
+  // The lower-left corner coordinates.
   GeoLocation bottom_left = 2;
 
 }
@@ -9344,6 +9596,7 @@ message UnitNanos {
 message UnmappedRareTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsVoid buckets = 2;
@@ -9352,6 +9605,7 @@ message UnmappedRareTermsAggregate {
 message UnmappedSamplerAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   float doc_count = 2;
@@ -9362,6 +9616,7 @@ message UnmappedSamplerAggregate {
 message UnmappedSignificantTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsVoid buckets = 2;
@@ -9374,6 +9629,7 @@ message UnmappedSignificantTermsAggregate {
 message UnmappedTermsAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsVoid buckets = 2;
@@ -9419,6 +9675,7 @@ message UpdateOperation {
 
   optional  VersionType version_type = 5;
 
+  // The unique identifier for a resource.
   optional  string underscore_id = 6;
 
   optional  string underscore_index = 7;
@@ -9459,8 +9716,10 @@ message UpdateWriteResponseBase {
 
   optional  bool forced_refresh = 2;
 
+  // The type of document or resource.
   optional  string underscore_type = 3;
 
+  // The unique identifier for a resource.
   optional  string underscore_id = 4;
 
   optional  string underscore_index = 5;
@@ -9479,6 +9738,7 @@ message UpdateWriteResponseBase {
 message ValueCountAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -9515,6 +9775,7 @@ enum ValueType {
 message VariableWidthHistogramAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   BucketsVariableWidthHistogramBucket buckets = 2;
@@ -9604,6 +9865,7 @@ enum Week {
 message WeightedAverageAggregation {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   optional  string name = 2;
@@ -9633,6 +9895,7 @@ message WeightedAverageValue {
 message WeightedAvgAggregate {
 
 
+  // The custom metadata attached to a resource.
   google.protobuf.Struct meta = 1;
 
   SingleMetricAggregateBaseAllOfValue value = 2;
@@ -9685,6 +9948,7 @@ message WildcardQueryOneOf {
 message WktGeoBounds {
 
 
+  // The WKT string representation of the geographical bounds.
   string wkt = 1;
 
 }
@@ -9713,6 +9977,7 @@ message WriteOperation {
 
   optional  VersionType version_type = 5;
 
+  // The unique identifier for a resource.
   optional  string underscore_id = 6;
 
   optional  string underscore_index = 7;
@@ -9734,8 +9999,10 @@ message WriteResponseBase {
 
   optional  bool forced_refresh = 2;
 
+  // The type of document or resource.
   optional  string underscore_type = 3;
 
+  // The unique identifier for a resource.
   optional  string underscore_id = 4;
 
   optional  string underscore_index = 5;

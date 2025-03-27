@@ -1642,9 +1642,7 @@ components:
     RoutingInQueryString:
       $ref: '#/components/schemas/StringOrStringArray'
     Duration:
-      description: |-
-        A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and
-        `d` (days). Also accepts "0" without a unit and "-1" to indicate an unspecified value.
+      description: A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts `0` without a unit and `-1` to indicate an unspecified value.
       pattern: ^(?:(-1)|([0-9\.]+)(?:d|h|m|s|ms|micros|nanos))$
       type: string
     WaitForActiveShards:
@@ -2544,11 +2542,14 @@ components:
         - query
     ScriptField:
       type: object
+      description: The configuration for a script field.
       properties:
         script:
           $ref: '#/components/schemas/Script'
+          description: The script to execute for this field.
         ignore_failure:
           type: boolean
+          description: Whether to ignore failures during script execution.
       required:
         - script
     SortResults:
@@ -2572,7 +2573,9 @@ components:
     Sort:
       oneOf:
         - $ref: '#/components/schemas/SortOptions'
+          description: The single sort option.
         - type: array
+          description: The list of sort options.
           items:
             $ref: '#/components/schemas/SortOptions'
     SourceConfig:
@@ -2660,6 +2663,7 @@ components:
           type: number
     Id:
       type: string
+      description: The unique identifier for a resource.
     VersionNumber:
       type: integer
       format: int64
@@ -2731,6 +2735,7 @@ components:
         - found
     Type:
       type: string
+      description: The type of document or resource.
       x-version-removed: '2.0'
     ExplanationDetail:
       type: object
@@ -2897,6 +2902,7 @@ components:
           description: Match open, non-hidden indexes.
     Metadata:
       type: object
+      description: The custom metadata attached to a resource.
       additionalProperties: true
     AdjacencyMatrixAggregation:
       allOf:
@@ -4440,6 +4446,9 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/QueryContainer'
+            pagination_depth:
+              type: integer
+              format: int32
     IdsQuery:
       allOf:
         - $ref: '#/components/schemas/QueryBase'
@@ -5389,15 +5398,19 @@ components:
       oneOf:
         - type: string
           const: _score
+          description: Sort by document score.
         - type: string
           const: _doc
+          description: Sort by document index order.
         - type: string
+          description: Sort by field name.
           not:
             type: string
             enum:
               - _doc
               - _score
         - type: object
+          description: Sort by score options.
           properties:
             underscore_score:
               $ref: '#/components/schemas/ScoreSort'
@@ -5410,6 +5423,7 @@ components:
           minProperties: 1
           maxProperties: 1
         - type: object
+          description: Sort by field options.
           propertyNames:
             allOf:
               - $ref: '#/components/schemas/Field'
@@ -5906,27 +5920,34 @@ components:
     GeoLocation:
       description: |-
         A latitude/longitude as a two-dimensional point. It can be represented in the following ways:
-        - As a `{lat, long}` object.
-        - As a geohash value.
-        - As a `[lon, lat]` array.
-        - As a string in `"<lat>, <lon>"` or WKT point format.
+         - As a `{lat, long}` object.
+         - As a geohash value.
+         - As a `[lon, lat]` array.
+         - As a string in `<lat>, <lon>` or WKT point format.
       oneOf:
         - title: latlon
+          description: The location specified using latitude and longitude coordinates.
           $ref: '#/components/schemas/LatLonGeoLocation'
         - title: geohash
+          description: The location specified using a geohash value.
           $ref: '#/components/schemas/GeoHashLocation'
         - title: coords
+          description: The location specified as an array of `[longitude, latitude]`.
           type: array
           items:
             type: number
             format: double
         - title: text
+          description: The location specified as a string in `lat,lon` or WKT format.
           type: string
     GeoDistanceType:
-      type: string
-      enum:
-        - arc
-        - plane
+      oneOf:
+        - type: string
+          const: arc
+          description: The arc calculation method uses great circle distance.
+        - type: string
+          const: plane
+          description: The plane calculation method uses faster but less accurate flat-earth distance.
     AggregationRange:
       type: object
       properties:
@@ -5977,18 +5998,22 @@ components:
     GeoBounds:
       description: |-
         A geo-bounding box. It can be represented in the following ways:
-        - As 4 top/bottom/left/right coordinates.
-        - As 2 top_left/bottom_right points.
-        - As 2 top_right/bottom_left points.
-        - As a Well Known Text (WKT) bounding box.
+         - As 4 top/bottom/left/right coordinates.
+         - As 2 top_left/bottom_right points.
+         - As 2 top_right/bottom_left points.
+         - As a Well Known Text (WKT) bounding box.
       oneOf:
         - title: coords
+          description: The bounds specified using coordinate values.
           $ref: '#/components/schemas/CoordsGeoBounds'
         - title: tlbr
+          description: The bounds specified using upper-left and lower-right points.
           $ref: '#/components/schemas/TopLeftBottomRightGeoBounds'
         - title: trbl
+          description: The bounds specified using upper-right and lower-left points.
           $ref: '#/components/schemas/TopRightBottomLeftGeoBounds'
         - title: wkt
+          description: The bounds specified using WKT format.
           $ref: '#/components/schemas/WktGeoBounds'
     GeoHashPrecision:
       description: The level of geohash precision, which can be expressed as a geohash length between 1 and 12 or as a distance measure, such as "1km" or "10m".
@@ -6049,6 +6074,7 @@ components:
             - string
     Name:
       type: string
+      description: The name of a resource or configuration element.
     InferenceConfigContainer:
       type: object
       properties:
@@ -6459,16 +6485,26 @@ components:
     MultiTermQueryRewrite:
       oneOf:
         - type: string
-          enum:
-            - constant_score
-            - constant_score_boolean
-            - scoring_boolean
+          const: constant_score
+          description: The constant score rewrite method assigns the same score to all matching documents.
+        - type: string
+          const: constant_score_boolean
+          description: The constant score Boolean rewrite method creates a Boolean query with a constant score.
+        - type: string
+          const: scoring_boolean
+          description: The scoring Boolean rewrite method creates a Boolean query that scores each term separately.
         - type: string
           pattern: top_terms(_blended_freqs|_boost)?_\d+
+          description: The top terms query rewrite method with optional parameters.
+        - type: string
+          pattern: top_terms(_blended_freqs|_boost)?_\d+
+          description: The top terms query rewrite method with optional parameters.
     Fuzziness:
       oneOf:
         - type: string
+          description: The fuzziness value as `AUTO`, or a string edit distance.
         - type: integer
+          description: The fuzziness value as a numeric edit distance.
           format: int32
     GeoExecution:
       type: string
@@ -6880,23 +6916,32 @@ components:
     FieldSort:
       oneOf:
         - title: order
+          description: The sort order direction.
           $ref: '#/components/schemas/SortOrder'
         - type: object
+          description: The detailed field sort options.
           properties:
             missing:
               $ref: '#/components/schemas/FieldValue'
+              description: The value to use when the field is missing.
             mode:
               $ref: '#/components/schemas/SortMode'
+              description: The mode for sorting on array fields.
             nested:
               $ref: '#/components/schemas/NestedSortValue'
+              description: The nested path sort options.
             order:
               $ref: '#/components/schemas/SortOrder'
+              description: The sort order direction.
             unmapped_type:
               $ref: '#/components/schemas/FieldType'
+              description: The type to use for unmapped fields.
             numeric_type:
               $ref: '#/components/schemas/FieldSortNumericType'
+              description: The numeric type to use for sorting.
             format:
               type: string
+              description: The format to use for the sort values.
     CompletionSuggester:
       allOf:
         - $ref: '#/components/schemas/SuggesterBase'
@@ -7776,13 +7821,14 @@ components:
           format: double
     LatLonGeoLocation:
       type: object
+      description: The geographical location specified using latitude and longitude.
       properties:
         lat:
-          description: Latitude
+          description: The latitude coordinate.
           type: number
           format: double
         lon:
-          description: Longitude
+          description: The longitude coordinate.
           type: number
           format: double
       required:
@@ -7790,6 +7836,7 @@ components:
         - lon
     GeoHashLocation:
       type: object
+      description: The geographical location specified using a geohash.
       properties:
         geohash:
           $ref: '#/components/schemas/GeoHash'
@@ -7797,19 +7844,24 @@ components:
         - geohash
     CoordsGeoBounds:
       type: object
+      description: The geographical bounds specified using coordinate values.
       properties:
         top:
           type: number
           format: double
+          description: The top boundary latitude.
         bottom:
           type: number
           format: double
+          description: The bottom boundary latitude.
         left:
           type: number
           format: double
+          description: The left boundary longitude.
         right:
           type: number
           format: double
+          description: The right boundary longitude.
       required:
         - bottom
         - left
@@ -7817,29 +7869,37 @@ components:
         - top
     TopLeftBottomRightGeoBounds:
       type: object
+      description: The geographical bounds specified using upper-left and lower-right points.
       properties:
         top_left:
           $ref: '#/components/schemas/GeoLocation'
+          description: The upper-left corner coordinates.
         bottom_right:
           $ref: '#/components/schemas/GeoLocation'
+          description: The lower-right corner coordinates.
       required:
         - bottom_right
         - top_left
     TopRightBottomLeftGeoBounds:
       type: object
+      description: The geographical bounds specified using upper-right and lower-left points.
       properties:
         top_right:
           $ref: '#/components/schemas/GeoLocation'
+          description: The upper-right corner coordinates.
         bottom_left:
           $ref: '#/components/schemas/GeoLocation'
+          description: The lower-left corner coordinates.
       required:
         - bottom_left
         - top_right
     WktGeoBounds:
       type: object
+      description: The geographical bounds specified using Well-Known Text (WKT) format.
       properties:
         wkt:
           type: string
+          description: The WKT string representation of the geographical bounds.
       required:
         - wkt
     RegressionInferenceOptions:
@@ -8468,12 +8528,19 @@ components:
         - xy_point
         - xy_shape
     FieldSortNumericType:
-      type: string
-      enum:
-        - date
-        - date_nanos
-        - double
-        - long
+      oneOf:
+        - type: string
+          const: date
+          description: The field contains date values.
+        - type: string
+          const: date_nanos
+          description: The field contains date values with nanosecond precision.
+        - type: string
+          const: double
+          description: The field contains double-precision floating-point values.
+        - type: string
+          const: long
+          description: The field contains long integer values.
     SuggesterBase:
       type: object
       properties:
@@ -9241,6 +9308,7 @@ components:
           $ref: '#/components/schemas/SortOrder'
     GeoHash:
       type: string
+      description: The geohash string representation of a geographical location.
     HoltWintersType:
       oneOf:
         - title: additive
